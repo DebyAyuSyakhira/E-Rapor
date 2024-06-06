@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "303926011262",
+    "project_id": "e-rapor-al-ikhlas",
+    "storage_bucket": "e-rapor-al-ikhlas.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:303926011262:android:2f3b85c7d2fba1de7abf2f",
+        "android_client_info": {
+          "package_name": "com.example.e_rapor"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5iqzzWblTVmJG3egzw6wsPZN6-xpXfm8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

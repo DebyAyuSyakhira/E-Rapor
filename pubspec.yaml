@@ -1,0 +1,37 @@
+name: e_rapor
+version: 1.0.0+1
+publish_to: none
+description: A new Flutter project.
+environment: 
+  sdk: '>=3.3.2 <4.0.0'
+
+dependencies: 
+  firebase_auth : ^5.0.0
+  firebase_core : ^3.0.0
+  cloud_firestore : ^5.0.0 
+  cupertino_icons: ^1.0.6
+  get: 4.6.6
+  flutter: 
+    sdk: flutter
+  google_fonts: ^6.2.1
+  
+
+dev_dependencies: 
+  flutter_lints: ^3.0.0
+  flutter_test: 
+    sdk: flutter
+
+flutter: 
+  uses-material-design: true
+  assets:
+      - images/
+
+  fonts: 
+    - family: Poppins
+      fonts: 
+        - asset: fonts/Poppins-Regular.ttf
+        - asset: fonts/Poppins-Medium.ttf
+        - asset: fonts/Poppins-SemiBold.ttf
+        - asset: fonts/Poppins-Bold.ttf
+        - asset: fonts/Poppins-ExtraBold.ttf
+        - asset: fonts/Poppins-Black.ttf
