@@ -1,5 +1,12 @@
 import 'package:get/get.dart';
 
+import 'package:e_rapor/app/modules/kelasA/bindings/kelas_a_binding.dart';
+import 'package:e_rapor/app/modules/kelasA/views/kelas_a_view.dart';
+import 'package:e_rapor/app/modules/kelasB/bindings/kelas_b_binding.dart';
+import 'package:e_rapor/app/modules/kelasB/views/kelas_b_view.dart';
+import 'package:e_rapor/app/modules/playgroup/bindings/playgroup_binding.dart';
+import 'package:e_rapor/app/modules/playgroup/views/playgroup_view.dart';
+
 import '../modules/add_murid/bindings/add_murid_binding.dart';
 import '../modules/add_murid/views/add_murid_view.dart';
 import '../modules/edit_murid/bindings/edit_murid_binding.dart';
@@ -16,15 +23,13 @@ import '../modules/reset_password/bindings/reset_password_binding.dart';
 import '../modules/reset_password/views/reset_password_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
-import '../modules/splash_screen/bindings/splash_screen_binding.dart';
-import '../modules/splash_screen/views/splash_screen_view.dart';
 
 part 'app_routes.dart';
 
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.SPLASH_SCREEN;
+  static const INITIAL = Routes.HOME;
 
   static final routes = [
     GetPage(
@@ -63,14 +68,24 @@ class AppPages {
       binding: EditMuridBinding(),
     ),
     GetPage(
-      name: _Paths.SPLASH_SCREEN,
-      page: () => const SplashScreenView(),
-      binding: SplashScreenBinding(),
-    ),
-    GetPage(
       name: _Paths.SPLASH,
       page: () => const SplashView(),
       binding: SplashBinding(),
+    ),
+    GetPage(
+      name: _Paths.PLAYGROUP,
+      page: () => PlaygroupView(),
+      binding: PlaygroupBinding(),
+    ),
+    GetPage(
+      name: _Paths.KELAS_A,
+      page: () => KelasAView(),
+      binding: KelasABinding(),
+    ),
+    GetPage(
+      name: _Paths.KELAS_B,
+      page: () => KelasBView(),
+      binding: KelasBBinding(),
     ),
   ];
 }

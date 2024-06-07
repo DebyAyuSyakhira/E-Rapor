@@ -19,12 +19,14 @@ class AddMuridView extends GetView<AddMuridController> {
             Container(
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('images/bg.jpg'),
+                  image: AssetImage('images/bg.png'),
                   fit: BoxFit.cover,
                 ),
               ),
               child: ListView(
-                padding: EdgeInsets.symmetric(horizontal: size.width * 0.07, vertical: size.height * 0.12),
+                padding: EdgeInsets.symmetric(
+                    horizontal: size.width * 0.07,
+                    vertical: size.height * 0.12),
                 children: [
                   const Text(
                     "Tambah Data Murid",
@@ -55,7 +57,8 @@ class AddMuridView extends GetView<AddMuridController> {
                         ),
                         const SizedBox(height: 30),
                         customTextFormField(
-                          textEditingController: controller.nomorIndukController,
+                          textEditingController:
+                              controller.nomorIndukController,
                           hintText: "Nomor Induk",
                           keyboardType: TextInputType.number,
                         ),
@@ -72,7 +75,8 @@ class AddMuridView extends GetView<AddMuridController> {
                           child: ElevatedButton(
                             onPressed: () {},
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color.fromRGBO(0, 135, 27, 1),
+                              backgroundColor:
+                                  const Color.fromRGBO(0, 135, 27, 1),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(30),
                                 side: const BorderSide(
@@ -103,7 +107,8 @@ class AddMuridView extends GetView<AddMuridController> {
               top: 16,
               left: 16,
               child: IconButton(
-                icon: const Icon(Icons.arrow_back, color: Color.fromARGB(255, 0, 135, 27)),
+                icon: const Icon(Icons.arrow_back,
+                    color: Color.fromARGB(255, 0, 135, 27)),
                 onPressed: () {
                   Get.back();
                 },
@@ -150,7 +155,7 @@ class AddMuridView extends GetView<AddMuridController> {
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(5),
             borderSide: const BorderSide(
-              color:  Color.fromRGBO(0, 135, 27, 1),
+              color: Color.fromRGBO(0, 135, 27, 1),
               width: 2,
               style: BorderStyle.solid,
               strokeAlign: BorderSide.strokeAlignInside,
@@ -159,7 +164,7 @@ class AddMuridView extends GetView<AddMuridController> {
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(5),
             borderSide: const BorderSide(
-              color:  Color.fromRGBO(0, 135, 27, 1),
+              color: Color.fromRGBO(0, 135, 27, 1),
               width: 2,
               style: BorderStyle.solid,
               strokeAlign: BorderSide.strokeAlignInside,
@@ -168,7 +173,7 @@ class AddMuridView extends GetView<AddMuridController> {
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(5),
             borderSide: const BorderSide(
-              color:  Color.fromRGBO(0, 135, 27, 1),
+              color: Color.fromRGBO(0, 135, 27, 1),
               width: 2,
               style: BorderStyle.solid,
               strokeAlign: BorderSide.strokeAlignInside,

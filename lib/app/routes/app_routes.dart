@@ -12,8 +12,10 @@ abstract class Routes {
   static const ADD_MURID = _Paths.ADD_MURID;
   static const EDIT_MURID = _Paths.EDIT_MURID;
   static const KELOLA_RAPOR = _Paths.KELOLA_RAPOR;
-  static const SPLASH_SCREEN = _Paths.SPLASH_SCREEN;
   static const SPLASH = _Paths.SPLASH;
+  static const PLAYGROUP = _Paths.PLAYGROUP;
+  static const KELAS_A = _Paths.KELAS_A;
+  static const KELAS_B = _Paths.KELAS_B;
 }
 
 abstract class _Paths {
@@ -27,6 +29,8 @@ abstract class _Paths {
   static const ADD_MURID = '/add-murid';
   static const EDIT_MURID = '/edit-murid';
   static const KELOLA_RAPOR = '/kelola-rapor';
-  static const SPLASH_SCREEN = '/splash-screen';
   static const SPLASH = '/splash';
+  static const PLAYGROUP = '/playgroup';
+  static const KELAS_A = '/kelas-a';
+  static const KELAS_B = '/kelas-b';
 }
