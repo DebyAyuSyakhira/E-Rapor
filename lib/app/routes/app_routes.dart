@@ -13,6 +13,7 @@ abstract class Routes {
   static const EDIT_MURID = _Paths.EDIT_MURID;
   static const KELOLA_RAPOR = _Paths.KELOLA_RAPOR;
   static const SPLASH_SCREEN = _Paths.SPLASH_SCREEN;
+  static const SPLASH = _Paths.SPLASH;
 }
 
 abstract class _Paths {
@@ -27,4 +28,5 @@ abstract class _Paths {
   static const EDIT_MURID = '/edit-murid';
   static const KELOLA_RAPOR = '/kelola-rapor';
   static const SPLASH_SCREEN = '/splash-screen';
+  static const SPLASH = '/splash';
 }
