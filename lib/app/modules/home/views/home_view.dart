@@ -1,3 +1,4 @@
+import 'package:e_rapor/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -32,11 +33,11 @@ class HomeView extends GetView<HomeController> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
+                    const Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Selamat Datang,',
+                          'Welcome,',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 24.0,
@@ -44,7 +45,7 @@ class HomeView extends GetView<HomeController> {
                           ),
                         ),
                         Text(
-                          'User!',
+                          'Users!',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 24.0,
@@ -60,6 +61,7 @@ class HomeView extends GetView<HomeController> {
                         size: 30.0,
                       ),
                       onPressed: () {
+                        Get.offAllNamed(Routes.LOGIN);
                         // Handle logout button press
                         print('Tombol Keluar ditekan');
                       },
@@ -70,37 +72,39 @@ class HomeView extends GetView<HomeController> {
               Spacer(flex: 2),
               Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    ClassCard(
-                      className: 'PLAYGROUP',
-                      onPressed: () {
-                        Get.toNamed("/playgroup");
-                        // Handle PLAYGROUP button press
-                        print('Tombol PLAYGROUP ditekan');
-                      },
-                    ),
-                    SizedBox(height: 16.0),
-                    ClassCard(
-                      className: 'KELAS A',
-                      onPressed: () {
-                        Get.toNamed("/kelas-a");
-                        // Handle KELAS A button press
-                        print('Tombol KELAS A ditekan');
-                      },
-                    ),
-                    SizedBox(height: 16.0),
-                    ClassCard(
-                      className: 'KELAS B',
-                      onPressed: () {
-                        Get.toNamed("/kelas-b");
-                        // Handle KELAS B button press
-                        print('Tombol KELAS B ditekan');
-                      },
-                    ),
-                  ],
+                child: Center(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      ClassCard(
+                        className: 'PLAYGROUP',
+                        onPressed: () {
+                          Get.toNamed("/playgroup");
+                          // Handle PLAYGROUP button press
+                          print('Tombol PLAYGROUP ditekan');
+                        },
+                      ),
+                      SizedBox(height: 16.0),
+                      ClassCard(
+                        className: 'KELAS A',
+                        onPressed: () {
+                          Get.toNamed("/kelas-a");
+                          // Handle KELAS A button press
+                          print('Tombol KELAS A ditekan');
+                        },
+                      ),
+                      SizedBox(height: 16.0),
+                      ClassCard(
+                        className: 'KELAS B',
+                        onPressed: () {
+                          Get.toNamed("/kelas-b");
+                          // Handle KELAS B button press
+                          print('Tombol KELAS B ditekan');
+                        },
+                      ),
+                    ],
+                  ),
                 ),
               ),
               Spacer(flex: 1),

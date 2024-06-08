@@ -5,26 +5,28 @@ import 'package:get/get.dart';
 import '../controllers/edit_murid_controller.dart';
 
 class EditMuridView extends GetView<EditMuridController> {
- final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   EditMuridView({super.key});
-  
- @override
+
+  @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: SafeArea(
-        child: Stack(
-          children: [
-            Container(
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('images/bg.jpg'),
-                  fit: BoxFit.cover,
-                ),
-              ),
-              child: ListView(
-                padding: EdgeInsets.symmetric(horizontal: size.width * 0.07, vertical: size.height * 0.12),
+    return Container(
+      decoration: const BoxDecoration(
+          color: Colors.white,
+          image: DecorationImage(
+              image: AssetImage("images/bg.png"),
+              fit: BoxFit.contain,
+              alignment: Alignment.bottomLeft)),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: SafeArea(
+          child: Stack(
+            children: [
+              ListView(
+                padding: EdgeInsets.symmetric(
+                    horizontal: size.width * 0.07,
+                    vertical: size.height * 0.12),
                 children: [
                   const Text(
                     "Edit Data Murid",
@@ -55,7 +57,8 @@ class EditMuridView extends GetView<EditMuridController> {
                         ),
                         const SizedBox(height: 30),
                         customTextFormField(
-                          textEditingController: controller.nomorIndukController,
+                          textEditingController:
+                              controller.nomorIndukController,
                           hintText: "Nomor Induk",
                           keyboardType: TextInputType.number,
                         ),
@@ -63,10 +66,10 @@ class EditMuridView extends GetView<EditMuridController> {
                         customTextFormField(
                           textEditingController: controller.usiaController,
                           hintText: "Usia",
-                           keyboardType: TextInputType.number,
+                          keyboardType: TextInputType.number,
                         ),
                         const SizedBox(height: 50),
-                       Row(
+                        Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Expanded(
@@ -75,7 +78,8 @@ class EditMuridView extends GetView<EditMuridController> {
                                 child: ElevatedButton(
                                   onPressed: () {},
                                   style: ElevatedButton.styleFrom(
-                                    backgroundColor: const Color.fromRGBO(0, 135, 27, 1),
+                                    backgroundColor:
+                                        const Color.fromRGBO(0, 135, 27, 1),
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(30),
                                       side: const BorderSide(
@@ -103,7 +107,8 @@ class EditMuridView extends GetView<EditMuridController> {
                                 child: ElevatedButton(
                                   onPressed: () {},
                                   style: ElevatedButton.styleFrom(
-                                    backgroundColor: const Color.fromRGBO(0, 135, 27, 1),
+                                    backgroundColor:
+                                        const Color.fromRGBO(0, 135, 27, 1),
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(30),
                                       side: const BorderSide(
@@ -131,18 +136,20 @@ class EditMuridView extends GetView<EditMuridController> {
                   ),
                 ],
               ),
-            ),
-            Positioned(
-              top: 16,
-              left: 16,
-              child: IconButton(
-                icon: const Icon(Icons.arrow_back, color: Color.fromARGB(255, 0, 135, 27)),
-                onPressed: () {
-                  Get.back();
-                },
+              Positioned(
+                top: 16,
+                left: 16,
+                child: IconButton(
+                  icon: const Icon(Icons.arrow_back,
+                      color: Color.fromARGB(255, 0, 135, 27)),
+                      iconSize: 30,
+                  onPressed: () {
+                    Get.back();
+                  },
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -183,7 +190,7 @@ class EditMuridView extends GetView<EditMuridController> {
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(5),
             borderSide: const BorderSide(
-              color:  Color.fromRGBO(0, 135, 27, 1),
+              color: Color.fromRGBO(0, 135, 27, 1),
               width: 2,
               style: BorderStyle.solid,
               strokeAlign: BorderSide.strokeAlignInside,
@@ -192,7 +199,7 @@ class EditMuridView extends GetView<EditMuridController> {
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(5),
             borderSide: const BorderSide(
-              color:  Color.fromRGBO(0, 135, 27, 1),
+              color: Color.fromRGBO(0, 135, 27, 1),
               width: 2,
               style: BorderStyle.solid,
               strokeAlign: BorderSide.strokeAlignInside,
@@ -201,7 +208,7 @@ class EditMuridView extends GetView<EditMuridController> {
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(5),
             borderSide: const BorderSide(
-              color:  Color.fromRGBO(0, 135, 27, 1),
+              color: Color.fromRGBO(0, 135, 27, 1),
               width: 2,
               style: BorderStyle.solid,
               strokeAlign: BorderSide.strokeAlignInside,

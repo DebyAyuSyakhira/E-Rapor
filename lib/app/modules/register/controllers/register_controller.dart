@@ -53,7 +53,7 @@ class RegisterController extends GetxController {
         "Berhasil",
         "Akun Anda berhasil dibuat.",
       );
-      Get.offAllNamed(Routes.HOME);
+      Get.offAllNamed(Routes.LOGIN);
       clearInputText();
     } on FirebaseAuthException catch (error) {
       if (error.code == "weak-password") {

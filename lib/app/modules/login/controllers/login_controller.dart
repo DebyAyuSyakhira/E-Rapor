@@ -11,13 +11,6 @@ class LoginController extends GetxController {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final RegisterController _registerController = Get.put(RegisterController());
 
-  @override
-  void onClose() {
-    emailController.dispose();
-    passwordController.dispose();
-    super.onClose();
-  }
-
   void clearInputText() {
     emailController.clear();
     passwordController.clear();
@@ -87,5 +80,11 @@ class LoginController extends GetxController {
               ? Colors.green
               : Colors.grey,
     );
+  }
+    @override
+  void onClose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.onClose();
   }
 }

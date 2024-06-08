@@ -8,7 +8,7 @@ class SplashView extends GetView<SplashController> {
   @override
   Widget build(BuildContext context) {
     Future.delayed(const Duration(seconds: 5), () {
-      Get.offNamed(Routes.REGISTER);
+      Get.offNamed(Routes.LOGIN);
     });
     return Scaffold(
       body: Column(
