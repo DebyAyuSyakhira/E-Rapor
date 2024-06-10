@@ -158,15 +158,13 @@ class KelolaRaporView extends GetView<KelolaRaporController> {
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(5)),
                                     borderSide: BorderSide(
-                                        color:
-                                            Color.fromRGBO(0, 135, 27, 1),
+                                        color: Color.fromRGBO(0, 135, 27, 1),
                                         width: 3)),
                                 focusedBorder: OutlineInputBorder(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(5)),
                                     borderSide: BorderSide(
-                                        color:
-                                            Color.fromRGBO(0, 135, 27, 1),
+                                        color: Color.fromRGBO(0, 135, 27, 1),
                                         width: 3)))),
                         const SizedBox(
                           height: 20,
@@ -193,15 +191,13 @@ class KelolaRaporView extends GetView<KelolaRaporController> {
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(5)),
                                     borderSide: BorderSide(
-                                        color:
-                                            Color.fromRGBO(0, 135, 27, 1),
+                                        color: Color.fromRGBO(0, 135, 27, 1),
                                         width: 3)),
                                 focusedBorder: OutlineInputBorder(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(5)),
                                     borderSide: BorderSide(
-                                        color:
-                                            Color.fromRGBO(0, 135, 27, 1),
+                                        color: Color.fromRGBO(0, 135, 27, 1),
                                         width: 3)))),
                         const SizedBox(
                           height: 20,
@@ -228,15 +224,13 @@ class KelolaRaporView extends GetView<KelolaRaporController> {
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(5)),
                                     borderSide: BorderSide(
-                                        color:
-                                            Color.fromRGBO(0, 135, 27, 1),
+                                        color: Color.fromRGBO(0, 135, 27, 1),
                                         width: 3)),
                                 focusedBorder: OutlineInputBorder(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(5)),
                                     borderSide: BorderSide(
-                                        color:
-                                            Color.fromRGBO(0, 135, 27, 1),
+                                        color: Color.fromRGBO(0, 135, 27, 1),
                                         width: 3)))),
                         const SizedBox(
                           height: 20,
@@ -263,15 +257,13 @@ class KelolaRaporView extends GetView<KelolaRaporController> {
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(5)),
                                     borderSide: BorderSide(
-                                        color:
-                                            Color.fromRGBO(0, 135, 27, 1),
+                                        color: Color.fromRGBO(0, 135, 27, 1),
                                         width: 3)),
                                 focusedBorder: OutlineInputBorder(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(5)),
                                     borderSide: BorderSide(
-                                        color:
-                                            Color.fromRGBO(0, 135, 27, 1),
+                                        color: Color.fromRGBO(0, 135, 27, 1),
                                         width: 3)))),
                         const SizedBox(
                           height: 20,
@@ -298,15 +290,13 @@ class KelolaRaporView extends GetView<KelolaRaporController> {
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(5)),
                                     borderSide: BorderSide(
-                                        color:
-                                            Color.fromRGBO(0, 135, 27, 1),
+                                        color: Color.fromRGBO(0, 135, 27, 1),
                                         width: 3)),
                                 focusedBorder: OutlineInputBorder(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(5)),
                                     borderSide: BorderSide(
-                                        color:
-                                            Color.fromRGBO(0, 135, 27, 1),
+                                        color: Color.fromRGBO(0, 135, 27, 1),
                                         width: 3)))),
                         const SizedBox(
                           height: 20,
@@ -464,11 +454,20 @@ class KelolaRaporView extends GetView<KelolaRaporController> {
                         ),
                         SizedBox(
                           height: 70,
-                          child: ElevatedButton(style: ElevatedButton.styleFrom(backgroundColor: const Color.fromRGBO(0, 135, 27, 1)),
-                            onPressed: (){Get.toNamed(Routes.RAPOR);}, child: const Text("Simpan",style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 22,
-                          ),)),
+                          child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor:
+                                      const Color.fromRGBO(0, 135, 27, 1)),
+                              onPressed: () {
+                                Get.toNamed(Routes.RAPOR);
+                              },
+                              child: const Text(
+                                "Simpan",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 22,
+                                ),
+                              )),
                         ),
                         const SizedBox(
                           height: 25,

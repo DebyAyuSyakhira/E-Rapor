@@ -1,20 +1,19 @@
 import 'package:get/get.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class KelasAController extends GetxController {
-  //TODO: Implement KelasAController
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final Rx<List<DocumentSnapshot>> muridA = Rx<List<DocumentSnapshot>>([]);
 
-  final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
+    fetchMurid(); // Panggil fetchMurid saat controller diinisialisasi
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  void fetchMurid() {
+    _firestore.collection('murid_a').snapshots().listen((snapshot) {
+      muridA.value = snapshot.docs;
+    });
   }
-
-  @override
-  void onClose() {}
-  void increment() => count.value++;
 }

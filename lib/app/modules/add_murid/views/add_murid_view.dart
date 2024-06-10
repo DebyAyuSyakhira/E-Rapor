@@ -1,114 +1,173 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-
 import '../controllers/add_murid_controller.dart';
 
 class AddMuridView extends GetView<AddMuridController> {
+  AddMuridView({Key? key}) : super(key: key);
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  AddMuridView({super.key});
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Container(
-              decoration: const BoxDecoration(
-          color: Colors.white,
-          image: DecorationImage(
-              image: AssetImage("images/bg.png"),
-              fit: BoxFit.contain,
-              alignment: Alignment.bottomLeft)),
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        image: DecorationImage(
+          image: AssetImage("images/bg.png"),
+          fit: BoxFit.contain,
+          alignment: Alignment.bottomLeft,
+        ),
+      ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: SafeArea(
           child: Stack(
             children: [
-                ListView(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: size.width * 0.07,
-                      vertical: size.height * 0.12),
-                  children: [
-                    const Text(
-                      "Tambah Data Murid",
-                      style: TextStyle(
-                        color: Color.fromRGBO(0, 135, 27, 1),
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
+              ListView(
+                padding: EdgeInsets.symmetric(
+                  horizontal: size.width * 0.07,
+                  vertical: size.height * 0.12,
+                ),
+                children: [
+                  const Text(
+                    "Tambah Data Murid",
+                    style: TextStyle(
+                      color: Color.fromRGBO(0, 135, 27, 1),
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
                     ),
-                    const SizedBox(height: 10),
-                    const Text(
-                      "Silakan lengkapi formulir berikut",
-                      style: TextStyle(
-                        color: Color(0xFF424242),
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                      ),
+                  ),
+                  const SizedBox(height: 10),
+                  const Text(
+                    "Silakan lengkapi formulir berikut",
+                    style: TextStyle(
+                      color: Color(0xFF424242),
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
                     ),
-                    const SizedBox(height: 30),
-                    Form(
-                      key: _formKey,
-                      child: Column(
-                        children: [
-                          customTextFormField(
-                            textEditingController: controller.namaMuridController,
-                            hintText: "Nama Murid",
-                            keyboardType: TextInputType.name,
-                          ),
-                          const SizedBox(height: 30),
-                          customTextFormField(
-                            textEditingController:
-                                controller.nomorIndukController,
-                            hintText: "Nomor Induk",
-                            keyboardType: TextInputType.number,
-                          ),
-                          const SizedBox(height: 30),
-                          customTextFormField(
-                            textEditingController: controller.usiaController,
-                            hintText: "Usia",
-                            keyboardType: TextInputType.number,
-                          ),
-                          const SizedBox(height: 50),
-                          SizedBox(
-                            height: 50,
-                            width: double.infinity,
-                            child: ElevatedButton(
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor:
-                                    const Color.fromRGBO(0, 135, 27, 1),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30),
-                                  side: const BorderSide(
-                                    color: Color.fromRGBO(0, 135, 27, 1),
-                                    width: 2,
-                                    style: BorderStyle.solid,
-                                    strokeAlign: BorderSide.strokeAlignInside,
-                                  ),
-                                ),
-                              ),
-                              child: const Text(
-                                "SIMPAN",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w600,
-                                ),
+                  ),
+                  const SizedBox(height: 30),
+                  Form(
+                    key: _formKey,
+                    child: Column(
+                      children: [
+                        customTextFormField(
+                          textEditingController: controller.namaMuridController,
+                          hintText: "Nama Murid",
+                          keyboardType: TextInputType.name,
+                        ),
+                        const SizedBox(height: 30),
+                        customTextFormField(
+                          textEditingController:
+                              controller.nomorIndukController,
+                          hintText: "Nomor Induk",
+                          keyboardType: TextInputType.number,
+                        ),
+                        const SizedBox(height: 30),
+                        customTextFormField(
+                          textEditingController: controller.usiaController,
+                          hintText: "Usia",
+                          keyboardType: TextInputType.number,
+                        ),
+                        const SizedBox(height: 50),
+                        ElevatedButton(
+                          onPressed: () {
+                            if (_formKey.currentState!.validate()) {
+                              controller.saveDataToFirestore('A');
+                            }
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor:
+                                const Color.fromRGBO(0, 135, 27, 1),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30),
+                              side: const BorderSide(
+                                color: Color.fromRGBO(0, 135, 27, 1),
+                                width: 2,
+                                style: BorderStyle.solid,
                               ),
                             ),
                           ),
-                        ],
-                      ),
+                          child: const Text(
+                            "SIMPAN Kelas A",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 20), // Spasi antara tombol
+                        ElevatedButton(
+                          onPressed: () {
+                            if (_formKey.currentState!.validate()) {
+                              controller.saveDataToFirestore('B');
+                            }
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor:
+                                const Color.fromRGBO(0, 135, 27, 1),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30),
+                              side: const BorderSide(
+                                color: Color.fromRGBO(0, 135, 27, 1),
+                                width: 2,
+                                style: BorderStyle.solid,
+                              ),
+                            ),
+                          ),
+                          child: const Text(
+                            "SIMPAN Kelas B",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 20), // Spasi antara tombol
+                        ElevatedButton(
+                          onPressed: () {
+                            if (_formKey.currentState!.validate()) {
+                              controller.saveDataToFirestore('C');
+                            }
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor:
+                                const Color.fromRGBO(0, 135, 27, 1),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30),
+                              side: const BorderSide(
+                                color: Color.fromRGBO(0, 135, 27, 1),
+                                width: 2,
+                                style: BorderStyle.solid,
+                              ),
+                            ),
+                          ),
+                          child: const Text(
+                            "SIMPAN Playgroup",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
+              ),
               Positioned(
                 top: 16,
                 left: 16,
                 child: IconButton(
-                  icon: const Icon(Icons.arrow_back,
-                      color: Color.fromARGB(255, 0, 135, 27)),
-                      iconSize: 30,
+                  icon: const Icon(
+                    Icons.arrow_back_ios_new,
+                    color: Color.fromARGB(255, 0, 135, 27),
+                  ),
+                  iconSize: 30,
                   onPressed: () {
                     Get.back();
                   },
@@ -159,7 +218,6 @@ class AddMuridView extends GetView<AddMuridController> {
               color: Color.fromRGBO(0, 135, 27, 1),
               width: 2,
               style: BorderStyle.solid,
-              strokeAlign: BorderSide.strokeAlignInside,
             ),
           ),
           enabledBorder: OutlineInputBorder(
@@ -168,7 +226,6 @@ class AddMuridView extends GetView<AddMuridController> {
               color: Color.fromRGBO(0, 135, 27, 1),
               width: 2,
               style: BorderStyle.solid,
-              strokeAlign: BorderSide.strokeAlignInside,
             ),
           ),
           focusedBorder: OutlineInputBorder(
@@ -177,7 +234,6 @@ class AddMuridView extends GetView<AddMuridController> {
               color: Color.fromRGBO(0, 135, 27, 1),
               width: 2,
               style: BorderStyle.solid,
-              strokeAlign: BorderSide.strokeAlignInside,
             ),
           ),
         ),

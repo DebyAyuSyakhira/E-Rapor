@@ -81,7 +81,8 @@ class LoginController extends GetxController {
               : Colors.grey,
     );
   }
-    @override
+
+  @override
   void onClose() {
     emailController.dispose();
     passwordController.dispose();
