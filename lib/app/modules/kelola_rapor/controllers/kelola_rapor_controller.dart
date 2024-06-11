@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class KelolaRaporController extends GetxController {
-  // dropdown belum disetting
-  // late TextEditingController selectedsemesterController = TextEditingController();
+  var selectedSemester = ''.obs; // Observable variable for selected semester
   late TextEditingController agamaController = TextEditingController();
   late TextEditingController motorikController = TextEditingController();
   late TextEditingController kognitifController = TextEditingController();
@@ -16,38 +15,29 @@ class KelolaRaporController extends GetxController {
   late TextEditingController tinggiBadanController = TextEditingController();
   late TextEditingController izinController = TextEditingController();
   late TextEditingController sakitController = TextEditingController();
-  late TextEditingController tanpaKeteranganController =
-      TextEditingController();
+  late TextEditingController tanpaKeteranganController = TextEditingController();
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-  void addData(
-      // dropdown belum disetting
-      // String selectedsemester,
-      String agama,
-      String motorik,
-      String kognitif,
-      String sosial,
-      String bahasa,
-      String seni,
-      String beratBadan,
-      String tinggiBadan,
-      String izin,
-      String sakit,
-      String tanpaKeterangan) async {
+  void addData(String agama, String motorik, String kognitif, String sosial, String bahasa, String seni, String beratBadan, String tinggiBadan, String izin, String sakit, String tanpaKeterangan) async {
     try {
       await firestore.collection('rapor').add({
-        // dropdown belum disetting
-        // 'selectedsemester': selectedsemester,
-        'agama': agama, 'motorik': motorik, 'kognitif': kognitif,
-        'sosial': sosial, 'bahasa': bahasa, 'seni': seni,
-        'beratBadan': beratBadan, 'tinggi': tinggiBadan,
-        'izin': izin, 'sakit': sakit, 'tanpaKeterangan': tanpaKeterangan
+        'selectedSemester': selectedSemester.value, // Add selected semester
+        'agama': agama, 
+        'motorik': motorik, 
+        'kognitif': kognitif,
+        'sosial': sosial, 
+        'bahasa': bahasa, 
+        'seni': seni,
+        'beratBadan': beratBadan, 
+        'tinggi': tinggiBadan,
+        'izin': izin, 
+        'sakit': sakit, 
+        'tanpaKeterangan': tanpaKeterangan
       });
       Get.back();
       Get.snackbar('Success', 'Data added successfully');
-      // dropdown belum disetting
-
-      // selectedsemesterController.clear();
+      
+      selectedSemester.value = ''; // Clear selected semester
       agamaController.clear();
       motorikController.clear();
       kognitifController.clear();
@@ -65,26 +55,7 @@ class KelolaRaporController extends GetxController {
   }
 
   @override
-  void onInit() {
-    // dropdown belum disetting
-    // selectedsemesterController = TextEditingController();
-    agamaController = TextEditingController();
-    motorikController = TextEditingController();
-    kognitifController = TextEditingController();
-    sosialController = TextEditingController();
-    bahasaController = TextEditingController();
-    seniController = TextEditingController();
-    beratBadanController = TextEditingController();
-    izinController = TextEditingController();
-    sakitController = TextEditingController();
-    tanpaKeteranganController = TextEditingController();
-    super.onInit();
-  }
-
-  @override
   void onClose() {
-    // dropdown belum disetting
-    // selectedsemesterController.dispose();
     agamaController.dispose();
     motorikController.dispose();
     kognitifController.dispose();
