@@ -1,13 +1,4 @@
-import 'package:e_rapor/app/modules/kelola_rapor/bindings/kelola_rapor_binding.dart';
-import 'package:e_rapor/app/modules/kelola_rapor/views/kelola_rapor_view.dart';
 import 'package:get/get.dart';
-
-import 'package:e_rapor/app/modules/kelasA/bindings/kelas_a_binding.dart';
-import 'package:e_rapor/app/modules/kelasA/views/kelas_a_view.dart';
-import 'package:e_rapor/app/modules/kelasB/bindings/kelas_b_binding.dart';
-import 'package:e_rapor/app/modules/kelasB/views/kelas_b_view.dart';
-import 'package:e_rapor/app/modules/playgroup/bindings/playgroup_binding.dart';
-import 'package:e_rapor/app/modules/playgroup/views/playgroup_view.dart';
 
 import '../modules/add_murid/bindings/add_murid_binding.dart';
 import '../modules/add_murid/views/add_murid_view.dart';
@@ -15,8 +6,20 @@ import '../modules/edit_murid/bindings/edit_murid_binding.dart';
 import '../modules/edit_murid/views/edit_murid_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/kelasA/bindings/kelas_a_binding.dart';
+import '../modules/kelasA/views/kelas_a_view.dart';
+import '../modules/kelasB/bindings/kelas_b_binding.dart';
+import '../modules/kelasB/views/kelas_b_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
+import '../modules/nilai_a/bindings/nilai_a_binding.dart';
+import '../modules/nilai_a/views/nilai_a_view.dart';
+import '../modules/nilai_b/bindings/nilai_b_binding.dart';
+import '../modules/nilai_b/views/nilai_b_view.dart';
+import '../modules/nilai_playgroup/bindings/nilai_playgroup_binding.dart';
+import '../modules/nilai_playgroup/views/nilai_playgroup_view.dart';
+import '../modules/playgroup/bindings/playgroup_binding.dart';
+import '../modules/playgroup/views/playgroup_view.dart';
 import '../modules/rapor/bindings/rapor_binding.dart';
 import '../modules/rapor/views/rapor_view.dart';
 import '../modules/register/bindings/register_binding.dart';
@@ -38,11 +41,6 @@ class AppPages {
       name: _Paths.HOME,
       page: () => HomeView(),
       binding: HomeBinding(),
-    ),
-    GetPage(
-      name: _Paths.KELOLA_RAPOR,
-      page: () => KelolaRaporView(),
-      binding: KelolaRaporBinding(),
     ),
     GetPage(
       name: _Paths.RAPOR,
@@ -93,6 +91,21 @@ class AppPages {
       name: _Paths.KELAS_B,
       page: () => KelasBView(),
       binding: KelasBBinding(),
+    ),
+    GetPage(
+      name: _Paths.NILAI_PLAYGROUP,
+      page: () =>  NilaiPlaygroupView(),
+      binding: NilaiPlaygroupBinding(),
+    ),
+    GetPage(
+      name: _Paths.NILAI_A,
+      page: () =>  NilaiAView(),
+      binding: NilaiABinding(),
+    ),
+    GetPage(
+      name: _Paths.NILAI_B,
+      page: () =>  NilaiBView(),
+      binding: NilaiBBinding(),
     ),
   ];
 }

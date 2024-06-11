@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class KelolaRaporController extends GetxController {
+class NilaiBController extends GetxController {
   var selectedSemester = ''.obs; // Observable variable for selected semester
   late TextEditingController agamaController = TextEditingController();
   late TextEditingController motorikController = TextEditingController();
@@ -20,7 +20,7 @@ class KelolaRaporController extends GetxController {
 
   void addData(String agama, String motorik, String kognitif, String sosial, String bahasa, String seni, String beratBadan, String tinggiBadan, String izin, String sakit, String tanpaKeterangan) async {
     try {
-      await firestore.collection('rapor').add({
+      await firestore.collection('rapor_b').add({
         'selectedSemester': selectedSemester.value, // Add selected semester
         'agama': agama, 
         'motorik': motorik, 

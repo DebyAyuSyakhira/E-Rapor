@@ -75,7 +75,7 @@ class KelasBView extends GetView<KelasBController> {
                           // Tambahkan logika untuk setiap opsi di sini
                           if (value == 'kelola-rapor') {
                             // Navigasi ke halaman kelola-rapor saat 'Lihat Rapor' dipilih
-                            Get.toNamed("/kelola-rapor");
+                            Get.toNamed("/nilai-b");
                           } else if (value == 'lihat-rapor') {
                             // Navigasi ke halaman rapor saat 'Ubah Data' dipilih
                             Get.toNamed("/rapor");

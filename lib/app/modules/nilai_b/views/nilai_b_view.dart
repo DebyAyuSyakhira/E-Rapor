@@ -1,12 +1,11 @@
-
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../controllers/kelola_rapor_controller.dart';
+import '../controllers/nilai_b_controller.dart';
 
-class KelolaRaporView extends GetView<KelolaRaporController> {
-  KelolaRaporView({super.key});
+class NilaiBView extends GetView<NilaiBController> {
+  NilaiBView({super.key});
   List<String> listsemester = ['Semester 1', 'Semester 2'];
 
   @override
