@@ -7,8 +7,8 @@ import '../controllers/kelola_rapor_controller.dart';
 
 class KelolaRaporView extends GetView<KelolaRaporController> {
   KelolaRaporView({super.key});
-  List<String> listCountry = ['Semester 1', 'Semester 2'];
-  String? _selectedCountry;
+  List<String> listsemester = ['Semester 1', 'Semester 2'];
+  String? _selectedsemester;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -104,7 +104,7 @@ class KelolaRaporView extends GetView<KelolaRaporController> {
                       "Pilih Semester Murid",
                       style: TextStyle(color: Colors.red),
                     ),
-                    items: listCountry.map(
+                    items: listsemester.map(
                       (String value) {
                         return DropdownMenuItem(
                           value: value,
@@ -117,12 +117,12 @@ class KelolaRaporView extends GetView<KelolaRaporController> {
                         );
                       },
                     ).toList(),
-                    value: _selectedCountry,
+                    value: _selectedsemester,
                     onChanged: (String? value) {
                       // setState di bawah blm ada methodnya
                       // setState
                       (() {
-                        _selectedCountry = value;
+                        _selectedsemester = value;
                       });
                     },
                   ),
@@ -148,6 +148,7 @@ class KelolaRaporView extends GetView<KelolaRaporController> {
                           height: 10,
                         ),
                         TextFormField(
+                          controller: controller.agamaController,
                             minLines: 5,
                             maxLines: 10,
                             decoration: const InputDecoration(
@@ -181,6 +182,7 @@ class KelolaRaporView extends GetView<KelolaRaporController> {
                           height: 10,
                         ),
                         TextFormField(
+                          controller: controller.motorikController,
                             minLines: 5,
                             maxLines: 10,
                             decoration: const InputDecoration(
@@ -214,6 +216,7 @@ class KelolaRaporView extends GetView<KelolaRaporController> {
                           height: 10,
                         ),
                         TextFormField(
+                          controller: controller.kognitifController,
                             minLines: 5,
                             maxLines: 10,
                             decoration: const InputDecoration(
@@ -247,6 +250,7 @@ class KelolaRaporView extends GetView<KelolaRaporController> {
                           height: 10,
                         ),
                         TextFormField(
+                          controller: controller.sosialController,
                             minLines: 5,
                             maxLines: 10,
                             decoration: const InputDecoration(
@@ -280,6 +284,7 @@ class KelolaRaporView extends GetView<KelolaRaporController> {
                           height: 10,
                         ),
                         TextFormField(
+                          controller: controller.bahasaController,
                             minLines: 5,
                             maxLines: 10,
                             decoration: const InputDecoration(
@@ -310,6 +315,7 @@ class KelolaRaporView extends GetView<KelolaRaporController> {
                           ),
                         ),
                         TextFormField(
+                          controller: controller.seniController,
                             minLines: 5,
                             maxLines: 10,
                             decoration: const InputDecoration(
@@ -340,6 +346,7 @@ class KelolaRaporView extends GetView<KelolaRaporController> {
                           ),
                         ),
                         TextFormField(
+                          controller: controller.beratBadanController,
                             maxLines: 1,
                             decoration: const InputDecoration(
                                 hintText: "Berat Badan (Kg)",
@@ -361,6 +368,7 @@ class KelolaRaporView extends GetView<KelolaRaporController> {
                           height: 10,
                         ),
                         TextFormField(
+                          controller: controller.tinggiBadanController,
                             maxLines: 1,
                             decoration: const InputDecoration(
                                 hintText: "Tinggi Badan (Cm)",
@@ -390,6 +398,7 @@ class KelolaRaporView extends GetView<KelolaRaporController> {
                           ),
                         ),
                         TextFormField(
+                          controller: controller.izinController,
                             maxLines: 1,
                             decoration: const InputDecoration(
                                 hintText: "Izin",
@@ -411,6 +420,7 @@ class KelolaRaporView extends GetView<KelolaRaporController> {
                           height: 10,
                         ),
                         TextFormField(
+                          controller: controller.sakitController,
                             maxLines: 1,
                             decoration: const InputDecoration(
                                 hintText: "Sakit",
@@ -432,6 +442,7 @@ class KelolaRaporView extends GetView<KelolaRaporController> {
                           height: 10,
                         ),
                         TextFormField(
+                          controller: controller.tanpaKeteranganController,
                             maxLines: 1,
                             decoration: const InputDecoration(
                                 hintText: "Tanpa Keterangan",
@@ -459,7 +470,12 @@ class KelolaRaporView extends GetView<KelolaRaporController> {
                                   backgroundColor:
                                       const Color.fromRGBO(0, 135, 27, 1)),
                               onPressed: () {
-                                Get.toNamed(Routes.RAPOR);
+                                controller.addData(
+                                  // controller.selectedsemesterController.text, 
+                                  controller.agamaController.text, controller.motorikController.text,
+                                controller.kognitifController.text, controller.sosialController.text, controller.bahasaController.text, controller.seniController.text,
+                                controller.beratBadanController.text, controller.tinggiBadanController.text, controller.izinController.text, controller.sakitController.text,
+                                controller.tanpaKeteranganController.text);
                               },
                               child: const Text(
                                 "Simpan",

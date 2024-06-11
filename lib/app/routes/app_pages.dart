@@ -1,3 +1,5 @@
+import 'package:e_rapor/app/modules/kelola_rapor/bindings/kelola_rapor_binding.dart';
+import 'package:e_rapor/app/modules/kelola_rapor/views/kelola_rapor_view.dart';
 import 'package:get/get.dart';
 
 import 'package:e_rapor/app/modules/kelasA/bindings/kelas_a_binding.dart';
@@ -36,6 +38,11 @@ class AppPages {
       name: _Paths.HOME,
       page: () => HomeView(),
       binding: HomeBinding(),
+    ),
+    GetPage(
+      name: _Paths.KELOLA_RAPOR,
+      page: () => KelolaRaporView(),
+      binding: KelolaRaporBinding(),
     ),
     GetPage(
       name: _Paths.RAPOR,
