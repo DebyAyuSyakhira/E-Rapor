@@ -1,10 +1,8 @@
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../../../routes/app_pages.dart';
 import '../controllers/kelola_rapor_controller.dart';
 
 class KelolaRaporView extends GetView<KelolaRaporController> {
@@ -85,7 +83,7 @@ class KelolaRaporView extends GetView<KelolaRaporController> {
                         child: const Text(
                           "Semester",
                           style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.bold),
+                              fontSize: 20, fontWeight: FontWeight.bold),
                         ),
                       ),
                       Obx(() => DropdownButtonFormField(
@@ -142,32 +140,34 @@ class KelolaRaporView extends GetView<KelolaRaporController> {
                             child: const Text(
                               "Perkembangan Nilai Agama dan Moral",
                               style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
+                                  fontSize: 20, fontWeight: FontWeight.bold),
                             ),
                           ),
                           const SizedBox(
                             height: 10,
                           ),
                           TextFormField(
-                              controller: controller.agamaController,
-                              minLines: 5,
-                              maxLines: 10,
-                              decoration: const InputDecoration(
-                                  hintText: "Deskripsi",
-                                  hintStyle: TextStyle(
-                                      color: Color.fromRGBO(0, 135, 27, 1)),
-                                  enabledBorder: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(5)),
-                                      borderSide: BorderSide(
-                                          color: Color.fromRGBO(0, 135, 27, 1),
-                                          width: 3)),
-                                  focusedBorder: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(5)),
-                                      borderSide: BorderSide(
-                                          color: Color.fromRGBO(0, 135, 27, 1),
-                                          width: 3)))),
+                            controller: controller.agamaController,
+                            minLines: 5,
+                            maxLines: 10,
+                            decoration: const InputDecoration(
+                                hintText: "Deskripsi",
+                                hintStyle: TextStyle(
+                                    color: Color.fromRGBO(0, 135, 27, 1)),
+                                enabledBorder: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5)),
+                                    borderSide: BorderSide(
+                                        color: Color.fromRGBO(0, 135, 27, 1),
+                                        width: 3)),
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5)),
+                                    borderSide: BorderSide(
+                                        color: Color.fromRGBO(0, 135, 27, 1),
+                                        width: 3))),
+                            style: const TextStyle(color: Colors.black, fontSize: 18),
+                          ),
                           const SizedBox(
                             height: 20,
                           ),
@@ -176,32 +176,34 @@ class KelolaRaporView extends GetView<KelolaRaporController> {
                             child: const Text(
                               "Perkembangan Motorik",
                               style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
+                                  fontSize: 20, fontWeight: FontWeight.bold),
                             ),
                           ),
                           const SizedBox(
                             height: 10,
                           ),
                           TextFormField(
-                              controller: controller.motorikController,
-                              minLines: 5,
-                              maxLines: 10,
-                              decoration: const InputDecoration(
-                                  hintText: "Deskripsi",
-                                  hintStyle: TextStyle(
-                                      color: Color.fromRGBO(0, 135, 27, 1)),
-                                  enabledBorder: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(5)),
-                                      borderSide: BorderSide(
-                                          color: Color.fromRGBO(0, 135, 27, 1),
-                                          width: 3)),
-                                  focusedBorder: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(5)),
-                                      borderSide: BorderSide(
-                                          color: Color.fromRGBO(0, 135, 27, 1),
-                                          width: 3)))),
+                            controller: controller.motorikController,
+                            minLines: 5,
+                            maxLines: 10,
+                            decoration: const InputDecoration(
+                                hintText: "Deskripsi",
+                                hintStyle: TextStyle(
+                                    color: Color.fromRGBO(0, 135, 27, 1)),
+                                enabledBorder: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5)),
+                                    borderSide: BorderSide(
+                                        color: Color.fromRGBO(0, 135, 27, 1),
+                                        width: 3)),
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5)),
+                                    borderSide: BorderSide(
+                                        color: Color.fromRGBO(0, 135, 27, 1),
+                                        width: 3))),
+                            style: const TextStyle(color: Colors.black, fontSize: 18),
+                          ),
                           const SizedBox(
                             height: 20,
                           ),
@@ -210,32 +212,34 @@ class KelolaRaporView extends GetView<KelolaRaporController> {
                             child: const Text(
                               "Perkembangan Kognitif",
                               style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
+                                  fontSize: 20, fontWeight: FontWeight.bold),
                             ),
                           ),
                           const SizedBox(
                             height: 10,
                           ),
                           TextFormField(
-                              controller: controller.kognitifController,
-                              minLines: 5,
-                              maxLines: 10,
-                              decoration: const InputDecoration(
-                                  hintText: "Deskripsi",
-                                  hintStyle: TextStyle(
-                                      color: Color.fromRGBO(0, 135, 27, 1)),
-                                  enabledBorder: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(5)),
-                                      borderSide: BorderSide(
-                                          color: Color.fromRGBO(0, 135, 27, 1),
-                                          width: 3)),
-                                  focusedBorder: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(5)),
-                                      borderSide: BorderSide(
-                                          color: Color.fromRGBO(0, 135, 27, 1),
-                                          width: 3)))),
+                            controller: controller.kognitifController,
+                            minLines: 5,
+                            maxLines: 10,
+                            decoration: const InputDecoration(
+                                hintText: "Deskripsi",
+                                hintStyle: TextStyle(
+                                    color: Color.fromRGBO(0, 135, 27, 1)),
+                                enabledBorder: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5)),
+                                    borderSide: BorderSide(
+                                        color: Color.fromRGBO(0, 135, 27, 1),
+                                        width: 3)),
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5)),
+                                    borderSide: BorderSide(
+                                        color: Color.fromRGBO(0, 135, 27, 1),
+                                        width: 3))),
+                            style: const TextStyle(color: Colors.black, fontSize: 18),
+                          ),
                           const SizedBox(
                             height: 20,
                           ),
@@ -244,32 +248,34 @@ class KelolaRaporView extends GetView<KelolaRaporController> {
                             child: const Text(
                               "Perkembangan Sosial Emosional",
                               style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
+                                  fontSize: 20, fontWeight: FontWeight.bold),
                             ),
                           ),
                           const SizedBox(
                             height: 10,
                           ),
                           TextFormField(
-                              controller: controller.sosialController,
-                              minLines: 5,
-                              maxLines: 10,
-                              decoration: const InputDecoration(
-                                  hintText: "Deskripsi",
-                                  hintStyle: TextStyle(
-                                      color: Color.fromRGBO(0, 135, 27, 1)),
-                                  enabledBorder: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(5)),
-                                      borderSide: BorderSide(
-                                          color: Color.fromRGBO(0, 135, 27, 1),
-                                          width: 3)),
-                                  focusedBorder: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(5)),
-                                      borderSide: BorderSide(
-                                          color: Color.fromRGBO(0, 135, 27, 1),
-                                          width: 3)))),
+                            controller: controller.sosialController,
+                            minLines: 5,
+                            maxLines: 10,
+                            decoration: const InputDecoration(
+                                hintText: "Deskripsi",
+                                hintStyle: TextStyle(
+                                    color: Color.fromRGBO(0, 135, 27, 1)),
+                                enabledBorder: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5)),
+                                    borderSide: BorderSide(
+                                        color: Color.fromRGBO(0, 135, 27, 1),
+                                        width: 3)),
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5)),
+                                    borderSide: BorderSide(
+                                        color: Color.fromRGBO(0, 135, 27, 1),
+                                        width: 3))),
+                            style: const TextStyle(color: Colors.black, fontSize: 18),
+                          ),
                           const SizedBox(
                             height: 20,
                           ),
@@ -278,32 +284,34 @@ class KelolaRaporView extends GetView<KelolaRaporController> {
                             child: const Text(
                               "Perkembangan Bahasa",
                               style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
+                                  fontSize: 20, fontWeight: FontWeight.bold),
                             ),
                           ),
                           const SizedBox(
                             height: 10,
                           ),
                           TextFormField(
-                              controller: controller.bahasaController,
-                              minLines: 5,
-                              maxLines: 10,
-                              decoration: const InputDecoration(
-                                  hintText: "Deskripsi",
-                                  hintStyle: TextStyle(
-                                      color: Color.fromRGBO(0, 135, 27, 1)),
-                                  enabledBorder: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(5)),
-                                      borderSide: BorderSide(
-                                          color: Color.fromRGBO(0, 135, 27, 1),
-                                          width: 3)),
-                                  focusedBorder: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(5)),
-                                      borderSide: BorderSide(
-                                          color: Color.fromRGBO(0, 135, 27, 1),
-                                          width: 3)))),
+                            controller: controller.bahasaController,
+                            minLines: 5,
+                            maxLines: 10,
+                            decoration: const InputDecoration(
+                                hintText: "Deskripsi",
+                                hintStyle: TextStyle(
+                                    color: Color.fromRGBO(0, 135, 27, 1)),
+                                enabledBorder: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5)),
+                                    borderSide: BorderSide(
+                                        color: Color.fromRGBO(0, 135, 27, 1),
+                                        width: 3)),
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5)),
+                                    borderSide: BorderSide(
+                                        color: Color.fromRGBO(0, 135, 27, 1),
+                                        width: 3))),
+                            style: const TextStyle(color: Colors.black, fontSize: 18),
+                          ),
                           const SizedBox(
                             height: 20,
                           ),
@@ -312,34 +320,47 @@ class KelolaRaporView extends GetView<KelolaRaporController> {
                             child: const Text(
                               "Perkembangan Seni",
                               style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
+                                  fontSize: 20, fontWeight: FontWeight.bold),
                             ),
                           ),
                           const SizedBox(
                             height: 10,
                           ),
                           TextFormField(
-                              controller: controller.seniController,
-                              minLines: 5,
-                              maxLines: 10,
-                              decoration: const InputDecoration(
-                                  hintText: "Deskripsi",
-                                  hintStyle: TextStyle(
-                                      color: Color.fromRGBO(0, 135, 27, 1)),
-                                  enabledBorder: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(5)),
-                                      borderSide: BorderSide(
-                                          color: Color.fromRGBO(0, 135, 27, 1),
-                                          width: 3)),
-                                  focusedBorder: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(5)),
-                                      borderSide: BorderSide(
-                                          color: Color.fromRGBO(0, 135, 27, 1),
-                                          width: 3)))),
+                            controller: controller.seniController,
+                            minLines: 5,
+                            maxLines: 10,
+                            decoration: const InputDecoration(
+                                hintText: "Deskripsi",
+                                hintStyle: TextStyle(
+                                    color: Color.fromRGBO(0, 135, 27, 1)),
+                                enabledBorder: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5)),
+                                    borderSide: BorderSide(
+                                        color: Color.fromRGBO(0, 135, 27, 1),
+                                        width: 3)),
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5)),
+                                    borderSide: BorderSide(
+                                        color: Color.fromRGBO(0, 135, 27, 1),
+                                        width: 3))),
+                            style: const TextStyle(color: Colors.black, fontSize: 18),
+                          ),
                           const SizedBox(
                             height: 20,
+                          ),
+                          Container(
+                          alignment: Alignment.topLeft,
+                          child: const Text(
+                            "Pertumbuhan",
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        const SizedBox(
+                            height: 10,
                           ),
                           Container(
                             alignment: Alignment.topLeft,
@@ -353,23 +374,25 @@ class KelolaRaporView extends GetView<KelolaRaporController> {
                             height: 10,
                           ),
                           TextFormField(
-                              controller: controller.tinggiBadanController,
-                              decoration: const InputDecoration(
-                                  hintText: "Tinggi Badan",
-                                  hintStyle: TextStyle(
-                                      color: Color.fromRGBO(0, 135, 27, 1)),
-                                  enabledBorder: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(5)),
-                                      borderSide: BorderSide(
-                                          color: Color.fromRGBO(0, 135, 27, 1),
-                                          width: 3)),
-                                  focusedBorder: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(5)),
-                                      borderSide: BorderSide(
-                                          color: Color.fromRGBO(0, 135, 27, 1),
-                                          width: 3)))),
+                            controller: controller.tinggiBadanController,
+                            decoration: const InputDecoration(
+                                hintText: "Tinggi Badan",
+                                hintStyle: TextStyle(
+                                    color: Color.fromRGBO(0, 135, 27, 1)),
+                                enabledBorder: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5)),
+                                    borderSide: BorderSide(
+                                        color: Color.fromRGBO(0, 135, 27, 1),
+                                        width: 3)),
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5)),
+                                    borderSide: BorderSide(
+                                        color: Color.fromRGBO(0, 135, 27, 1),
+                                        width: 3))),
+                            style: const TextStyle(color: Colors.black, fontSize: 18),
+                          ),
                           const SizedBox(
                             height: 20,
                           ),
@@ -385,23 +408,25 @@ class KelolaRaporView extends GetView<KelolaRaporController> {
                             height: 10,
                           ),
                           TextFormField(
-                              controller: controller.beratBadanController,
-                              decoration: const InputDecoration(
-                                  hintText: "Berat Badan",
-                                  hintStyle: TextStyle(
-                                      color: Color.fromRGBO(0, 135, 27, 1)),
-                                  enabledBorder: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(5)),
-                                      borderSide: BorderSide(
-                                          color: Color.fromRGBO(0, 135, 27, 1),
-                                          width: 3)),
-                                  focusedBorder: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(5)),
-                                      borderSide: BorderSide(
-                                          color: Color.fromRGBO(0, 135, 27, 1),
-                                          width: 3)))),
+                            controller: controller.beratBadanController,
+                            decoration: const InputDecoration(
+                                hintText: "Berat Badan",
+                                hintStyle: TextStyle(
+                                    color: Color.fromRGBO(0, 135, 27, 1)),
+                                enabledBorder: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5)),
+                                    borderSide: BorderSide(
+                                        color: Color.fromRGBO(0, 135, 27, 1),
+                                        width: 3)),
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5)),
+                                    borderSide: BorderSide(
+                                        color: Color.fromRGBO(0, 135, 27, 1),
+                                        width: 3))),
+                            style: const TextStyle(color: Colors.black, fontSize: 18),
+                          ),
                           const SizedBox(
                             height: 20,
                           ),
@@ -410,7 +435,7 @@ class KelolaRaporView extends GetView<KelolaRaporController> {
                             child: const Text(
                               "Jumlah Ketidakhadiran",
                               style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
+                                  fontSize: 20, fontWeight: FontWeight.bold),
                             ),
                           ),
                           const SizedBox(
@@ -428,23 +453,25 @@ class KelolaRaporView extends GetView<KelolaRaporController> {
                             height: 10,
                           ),
                           TextFormField(
-                              controller: controller.izinController,
-                              decoration: const InputDecoration(
-                                  hintText: "Izin",
-                                  hintStyle: TextStyle(
-                                      color: Color.fromRGBO(0, 135, 27, 1)),
-                                  enabledBorder: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(5)),
-                                      borderSide: BorderSide(
-                                          color: Color.fromRGBO(0, 135, 27, 1),
-                                          width: 3)),
-                                  focusedBorder: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(5)),
-                                      borderSide: BorderSide(
-                                          color: Color.fromRGBO(0, 135, 27, 1),
-                                          width: 3)))),
+                            controller: controller.izinController,
+                            decoration: const InputDecoration(
+                                hintText: "Izin",
+                                hintStyle: TextStyle(
+                                    color: Color.fromRGBO(0, 135, 27, 1)),
+                                enabledBorder: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5)),
+                                    borderSide: BorderSide(
+                                        color: Color.fromRGBO(0, 135, 27, 1),
+                                        width: 3)),
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5)),
+                                    borderSide: BorderSide(
+                                        color: Color.fromRGBO(0, 135, 27, 1),
+                                        width: 3))),
+                            style: const TextStyle(color: Colors.black, fontSize: 18),
+                          ),
                           const SizedBox(
                             height: 20,
                           ),
@@ -460,23 +487,25 @@ class KelolaRaporView extends GetView<KelolaRaporController> {
                             height: 10,
                           ),
                           TextFormField(
-                              controller: controller.sakitController,
-                              decoration: const InputDecoration(
-                                  hintText: "Sakit",
-                                  hintStyle: TextStyle(
-                                      color: Color.fromRGBO(0, 135, 27, 1)),
-                                  enabledBorder: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(5)),
-                                      borderSide: BorderSide(
-                                          color: Color.fromRGBO(0, 135, 27, 1),
-                                          width: 3)),
-                                  focusedBorder: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(5)),
-                                      borderSide: BorderSide(
-                                          color: Color.fromRGBO(0, 135, 27, 1),
-                                          width: 3)))),
+                            controller: controller.sakitController,
+                            decoration: const InputDecoration(
+                                hintText: "Sakit",
+                                hintStyle: TextStyle(
+                                    color: Color.fromRGBO(0, 135, 27, 1)),
+                                enabledBorder: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5)),
+                                    borderSide: BorderSide(
+                                        color: Color.fromRGBO(0, 135, 27, 1),
+                                        width: 3)),
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5)),
+                                    borderSide: BorderSide(
+                                        color: Color.fromRGBO(0, 135, 27, 1),
+                                        width: 3))),
+                            style: const TextStyle(color: Colors.black, fontSize: 18),
+                          ),
                           const SizedBox(
                             height: 20,
                           ),
@@ -492,41 +521,57 @@ class KelolaRaporView extends GetView<KelolaRaporController> {
                             height: 10,
                           ),
                           TextFormField(
-                              controller: controller.tanpaKeteranganController,
-                              decoration: const InputDecoration(
-                                  hintText: "Tanpa Keterangan",
-                                  hintStyle: TextStyle(
-                                      color: Color.fromRGBO(0, 135, 27, 1)),
-                                  enabledBorder: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(5)),
-                                      borderSide: BorderSide(
-                                          color: Color.fromRGBO(0, 135, 27, 1),
-                                          width: 3)),
-                                  focusedBorder: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(5)),
-                                      borderSide: BorderSide(
-                                          color: Color.fromRGBO(0, 135, 27, 1),
-                                          width: 3)))),
+                            controller: controller.tanpaKeteranganController,
+                            decoration: const InputDecoration(
+                                hintText: "Tanpa Keterangan",
+                                hintStyle: TextStyle(
+                                    color: Color.fromRGBO(0, 135, 27, 1)),
+                                enabledBorder: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5)),
+                                    borderSide: BorderSide(
+                                        color: Color.fromRGBO(0, 135, 27, 1),
+                                        width: 3)),
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5)),
+                                    borderSide: BorderSide(
+                                        color: Color.fromRGBO(0, 135, 27, 1),
+                                        width: 3))),
+                            style: const TextStyle(color: Colors.black, fontSize: 18),
+                          ),
                           const SizedBox(
                             height: 20,
                           ),
-                          ElevatedButton(
-                            onPressed: () {controller.addData(
-                                  controller.agamaController.text, controller.motorikController.text,
-                                controller.kognitifController.text, controller.sosialController.text, controller.bahasaController.text, controller.seniController.text,
-                                controller.beratBadanController.text, controller.tinggiBadanController.text, controller.izinController.text, controller.sakitController.text,
-                                controller.tanpaKeteranganController.text);
+                          SizedBox(
+                            height: 70,
+                            child: ElevatedButton(
+                              onPressed: () {
+                                controller.addData(
+                                    controller.agamaController.text,
+                                    controller.motorikController.text,
+                                    controller.kognitifController.text,
+                                    controller.sosialController.text,
+                                    controller.bahasaController.text,
+                                    controller.seniController.text,
+                                    controller.beratBadanController.text,
+                                    controller.tinggiBadanController.text,
+                                    controller.izinController.text,
+                                    controller.sakitController.text,
+                                    controller.tanpaKeteranganController.text);
                               },
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor:
-                                    const Color.fromRGBO(0, 135, 27, 1)),
-                            child: const Text(
-                              "Simpan",
-                              style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor:
+                                      const Color.fromRGBO(0, 135, 27, 1)),
+                              child: const Text(
+                                "Simpan",
+                                style: TextStyle(
+                                    fontSize: 22, color: Colors.white),
+                              ),
                             ),
+                          ),
+                          const SizedBox(
+                            height: 25,
                           ),
                         ],
                       ))
