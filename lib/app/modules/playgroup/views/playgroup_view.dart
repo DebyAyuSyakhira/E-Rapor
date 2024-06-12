@@ -41,7 +41,7 @@ class PlaygroupView extends GetView<PlaygroupController> {
                 child: GestureDetector(
                   onTap: () {
                     // Navigasi ke halaman baru saat data murid ditekan
-                    Get.toNamed("/edit-murid");
+                    Get.toNamed("/edit-murid", arguments: muridList[index].id);
                   },
                   child: Container(
                     decoration: BoxDecoration(
@@ -99,9 +99,13 @@ class PlaygroupView extends GetView<PlaygroupController> {
                                     TextButton(
                                       onPressed: () async {
                                         // Lakukan penghapusan
+                                        await FirebaseFirestore.instance;
+                                        final muridId = muridList[index]
+                                            .id; // dapatkan ID murid
                                         await FirebaseFirestore.instance
-                                            .collection('murid_c')
-                                            .doc(muridList[index].id)
+                                            .collection('student')
+                                            .doc(
+                                                muridId) // gunakan ID murid untuk menghapus data
                                             .delete();
                                         Navigator.of(context).pop();
                                       },

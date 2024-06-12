@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 
 import '../controllers/edit_murid_controller.dart';
@@ -13,11 +12,13 @@ class EditMuridView extends GetView<EditMuridController> {
     final size = MediaQuery.of(context).size;
     return Container(
       decoration: const BoxDecoration(
-          color: Colors.white,
-          image: DecorationImage(
-              image: AssetImage("images/bg.png"),
-              fit: BoxFit.contain,
-              alignment: Alignment.bottomLeft)),
+        color: Colors.white,
+        image: DecorationImage(
+          image: AssetImage("images/bg.png"),
+          fit: BoxFit.contain,
+          alignment: Alignment.bottomLeft,
+        ),
+      ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: SafeArea(
@@ -25,8 +26,9 @@ class EditMuridView extends GetView<EditMuridController> {
             children: [
               ListView(
                 padding: EdgeInsets.symmetric(
-                    horizontal: size.width * 0.07,
-                    vertical: size.height * 0.12),
+                  horizontal: size.width * 0.07,
+                  vertical: size.height * 0.12,
+                ),
                 children: [
                   const Text(
                     "Edit Data Murid",
@@ -76,7 +78,9 @@ class EditMuridView extends GetView<EditMuridController> {
                               child: SizedBox(
                                 height: 50,
                                 child: ElevatedButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    controller.deleteDataFromFirestore();
+                                  },
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor:
                                         const Color.fromRGBO(0, 135, 27, 1),
@@ -105,7 +109,12 @@ class EditMuridView extends GetView<EditMuridController> {
                               child: SizedBox(
                                 height: 50,
                                 child: ElevatedButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    if (_formKey.currentState!.validate()) {
+                                      controller
+                                          .updateDataInFirestore(); // Panggil fungsi update
+                                    }
+                                  },
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor:
                                         const Color.fromRGBO(0, 135, 27, 1),
@@ -140,9 +149,11 @@ class EditMuridView extends GetView<EditMuridController> {
                 top: 16,
                 left: 16,
                 child: IconButton(
-                  icon: const Icon(Icons.arrow_back,
-                      color: Color.fromARGB(255, 0, 135, 27)),
-                      iconSize: 30,
+                  icon: const Icon(
+                    Icons.arrow_back,
+                    color: Color.fromARGB(255, 0, 135, 27),
+                  ),
+                  iconSize: 30,
                   onPressed: () {
                     Get.back();
                   },
@@ -193,7 +204,6 @@ class EditMuridView extends GetView<EditMuridController> {
               color: Color.fromRGBO(0, 135, 27, 1),
               width: 2,
               style: BorderStyle.solid,
-              strokeAlign: BorderSide.strokeAlignInside,
             ),
           ),
           enabledBorder: OutlineInputBorder(
@@ -202,7 +212,6 @@ class EditMuridView extends GetView<EditMuridController> {
               color: Color.fromRGBO(0, 135, 27, 1),
               width: 2,
               style: BorderStyle.solid,
-              strokeAlign: BorderSide.strokeAlignInside,
             ),
           ),
           focusedBorder: OutlineInputBorder(
@@ -211,7 +220,6 @@ class EditMuridView extends GetView<EditMuridController> {
               color: Color.fromRGBO(0, 135, 27, 1),
               width: 2,
               style: BorderStyle.solid,
-              strokeAlign: BorderSide.strokeAlignInside,
             ),
           ),
         ),

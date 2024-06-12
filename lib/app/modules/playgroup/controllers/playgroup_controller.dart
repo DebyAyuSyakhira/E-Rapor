@@ -17,7 +17,6 @@ class PlaygroupController extends GetxController {
   // Fungsi untuk mengambil data murid kelas B dari Firestore
   void fetchData() async {
     try {
-      // print(idPlaygroup);
       _firestore
           .collection('student')
           .where("student_class_id", isEqualTo: idPlaygroup)
@@ -25,11 +24,6 @@ class PlaygroupController extends GetxController {
           .listen((snapshot) {
         murid_c.value = snapshot.docs;
       });
-      // final QuerySnapshot querySnapshot = await _firestore
-      //     .collection('student')
-      //     .where("student_class_id", isEqualTo: idPlaygroup)
-      //     .get();
-      //   murid_c.value = querySnapshot.docs;
     } catch (error) {
       print('Error while fetching data: $error');
     }

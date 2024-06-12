@@ -9,6 +9,7 @@ class KelasAView extends GetView<KelasAController> {
 
   @override
   Widget build(BuildContext context) {
+    controller.fetchData();
     return Scaffold(
       appBar: AppBar(
         title: const Text('DAFTAR MURID KELAS A'), // Judul AppBar
@@ -21,7 +22,8 @@ class KelasAView extends GetView<KelasAController> {
       ),
       body: Obx(() {
         // Widget Obx akan rebuild saat nilai dari Rx variable berubah
-        final List<DocumentSnapshot> muridList = controller.muridA.value;
+        final List<DocumentSnapshot> muridList = controller.murid_a;
+        print(muridList);
         if (muridList.isEmpty) {
           // Jika daftar murid kosong, tampilkan pesan
           return const Center(
@@ -33,7 +35,6 @@ class KelasAView extends GetView<KelasAController> {
             itemCount: muridList.length,
             itemBuilder: (context, index) {
               final murid = muridList[index].data() as Map<String, dynamic>;
-
               // Tampilkan informasi murid dalam ListTile
               return Padding(
                 padding:
@@ -41,31 +42,31 @@ class KelasAView extends GetView<KelasAController> {
                 child: GestureDetector(
                   onTap: () {
                     // Navigasi ke halaman baru saat data murid ditekan
-                    Get.toNamed("/edit-murid");
+                    Get.toNamed("/edit-murid", arguments: muridList[index].id);
                   },
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Color(
+                      color: const Color(
                           0xFF00871B), // Ganti warna latar belakang menjadi hijau
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                     child: ListTile(
                       title: Text(
-                        murid['nama'], // Tampilkan nama murid di tengah
-                        style: TextStyle(color: Colors.white),
+                        murid['name'], // Tampilkan nama murid di tengah
+                        style: const TextStyle(color: Colors.white),
                       ),
                       trailing: PopupMenuButton<String>(
                         itemBuilder: (context) {
                           return <PopupMenuEntry<String>>[
-                            PopupMenuItem<String>(
+                            const PopupMenuItem<String>(
                               child: Text('Kelola Rapor'),
                               value: 'kelola-rapor',
                             ),
-                            PopupMenuItem<String>(
+                            const PopupMenuItem<String>(
                               child: Text('Lihat Rapor'),
                               value: 'lihat-rapor',
                             ),
-                            PopupMenuItem<String>(
+                            const PopupMenuItem<String>(
                               child: Text('Hapus'),
                               value: 'hapus',
                             ),
@@ -75,7 +76,7 @@ class KelasAView extends GetView<KelasAController> {
                           // Tambahkan logika untuk setiap opsi di sini
                           if (value == 'kelola-rapor') {
                             // Navigasi ke halaman kelola-rapor saat 'Lihat Rapor' dipilih
-                            Get.toNamed("/nilai-a");
+                            Get.toNamed("/nilai-playgroup");
                           } else if (value == 'lihat-rapor') {
                             // Navigasi ke halaman rapor saat 'Ubah Data' dipilih
                             Get.toNamed("/rapor");
@@ -85,8 +86,8 @@ class KelasAView extends GetView<KelasAController> {
                               context: context,
                               builder: (BuildContext context) {
                                 return AlertDialog(
-                                  title: Text('Konfirmasi Hapus'),
-                                  content: Text(
+                                  title: const Text('Konfirmasi Hapus'),
+                                  content: const Text(
                                       'Apakah Anda yakin ingin menghapus data murid ini?'),
                                   actions: [
                                     TextButton(
@@ -94,18 +95,22 @@ class KelasAView extends GetView<KelasAController> {
                                         // Batalkan penghapusan
                                         Navigator.of(context).pop();
                                       },
-                                      child: Text('Batal'),
+                                      child: const Text('Batal'),
                                     ),
                                     TextButton(
                                       onPressed: () async {
                                         // Lakukan penghapusan
+                                        await FirebaseFirestore.instance;
+                                        final muridId = muridList[index]
+                                            .id; // dapatkan ID murid
                                         await FirebaseFirestore.instance
-                                            .collection('murid_a')
-                                            .doc(muridList[index].id)
+                                            .collection('student')
+                                            .doc(
+                                                muridId) // gunakan ID murid untuk menghapus data
                                             .delete();
                                         Navigator.of(context).pop();
                                       },
-                                      child: Text('Hapus'),
+                                      child: const Text('Hapus'),
                                     ),
                                   ],
                                 );
@@ -125,7 +130,7 @@ class KelasAView extends GetView<KelasAController> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // Aksi saat tombol tambah murid ditekan
-          Get.toNamed("/add-murid");
+          Get.toNamed("/add-murid", arguments: controller.idKelasA);
         },
         backgroundColor: const Color.fromARGB(255, 244, 221, 10),
         child: const Icon(

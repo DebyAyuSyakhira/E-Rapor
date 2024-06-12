@@ -2,25 +2,35 @@ import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class KelasAController extends GetxController {
+  // RxList untuk menyimpan daftar murid kelas B
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  final Rx<List<DocumentSnapshot>> muridA = Rx<List<DocumentSnapshot>>([]);
-  String idA = Get.arguments;
+  RxList<DocumentSnapshot> murid_a = <DocumentSnapshot>[].obs;
+  String idKelasA = Get.arguments;
 
   @override
   void onInit() {
     super.onInit();
-    fetchMurid(); // Panggil fetchMurid saat controller diinisialisasi
+    // Panggil fungsi untuk mengambil data murid kelas B dari Firestore saat kontroller diinisialisasi
+    fetchData();
   }
 
-  void fetchMurid() async {
+  // Fungsi untuk mengambil data murid kelas B dari Firestore
+  void fetchData() async {
     try {
-      final QuerySnapshot querySnapshot = await _firestore
+      _firestore
           .collection('student')
-          .where("student_class_id", isEqualTo: idA)
-          .get();
-      muridA.value = querySnapshot.docs;
+          .where("student_class_id", isEqualTo: idKelasA)
+          .snapshots()
+          .listen((snapshot) {
+        murid_a.value = snapshot.docs;
+      });
     } catch (error) {
       print('Error while fetching data: $error');
     }
-}
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
+  }
 }

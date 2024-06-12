@@ -34,7 +34,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.SPLASH;
+  static const INITIAL = Routes.HOME;
 
   static final routes = [
     GetPage(
@@ -94,17 +94,17 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.NILAI_PLAYGROUP,
-      page: () =>  NilaiPlaygroupView(),
+      page: () => NilaiPlaygroupView(),
       binding: NilaiPlaygroupBinding(),
     ),
     GetPage(
       name: _Paths.NILAI_A,
-      page: () =>  NilaiAView(),
+      page: () => NilaiAView(),
       binding: NilaiABinding(),
     ),
     GetPage(
       name: _Paths.NILAI_B,
-      page: () =>  NilaiBView(),
+      page: () => NilaiBView(),
       binding: NilaiBBinding(),
     ),
   ];
