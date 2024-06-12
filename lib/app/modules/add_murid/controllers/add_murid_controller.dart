@@ -49,18 +49,13 @@ class AddMuridController extends GetxController {
     }
   }
 
-  Future<void> saveDataToFirestore(String kelas) async {
+  Future<void> saveDataToFirestore(String studentClassId) async {
     try {
-      final String collection = (kelas == 'A')
-          ? 'murid_a'
-          : (kelas == 'B')
-              ? 'murid_b'
-              : 'murid_c';
-
-      await _firestore.collection(collection).add({
-        'nama': namaMuridController.text,
-        'nomor_induk': nomorIndukController.text,
-        'usia': usiaController.text,
+      await _firestore.collection("student").add({
+        "student_class_id ": studentClassId,
+        "name": namaMuridController.text,
+        "id_number": nomorIndukController.text,
+        "age": usiaController.text,
       });
 
       namaMuridController.clear();

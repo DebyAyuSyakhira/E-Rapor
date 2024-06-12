@@ -8,6 +8,7 @@ class PlaygroupView extends GetView<PlaygroupController> {
 
   @override
   Widget build(BuildContext context) {
+    controller.fetchData();
     return Scaffold(
       appBar: AppBar(
         title: const Text('DAFTAR MURID PLAYGROUP'), // Judul AppBar
@@ -20,7 +21,8 @@ class PlaygroupView extends GetView<PlaygroupController> {
       ),
       body: Obx(() {
         // Widget Obx akan rebuild saat nilai dari Rx variable berubah
-        final List<DocumentSnapshot> muridList = controller.murid_c.value;
+        final List<DocumentSnapshot> muridList = controller.murid_c;
+        print(muridList);
         if (muridList.isEmpty) {
           // Jika daftar murid kosong, tampilkan pesan
           return const Center(
@@ -32,7 +34,6 @@ class PlaygroupView extends GetView<PlaygroupController> {
             itemCount: muridList.length,
             itemBuilder: (context, index) {
               final murid = muridList[index].data() as Map<String, dynamic>;
-
               // Tampilkan informasi murid dalam ListTile
               return Padding(
                 padding:
@@ -44,27 +45,27 @@ class PlaygroupView extends GetView<PlaygroupController> {
                   },
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Color(
+                      color: const Color(
                           0xFF00871B), // Ganti warna latar belakang menjadi hijau
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                     child: ListTile(
                       title: Text(
-                        murid['nama'], // Tampilkan nama murid di tengah
-                        style: TextStyle(color: Colors.white),
+                        murid['name'], // Tampilkan nama murid di tengah
+                        style: const TextStyle(color: Colors.white),
                       ),
                       trailing: PopupMenuButton<String>(
                         itemBuilder: (context) {
                           return <PopupMenuEntry<String>>[
-                            PopupMenuItem<String>(
+                            const PopupMenuItem<String>(
                               child: Text('Kelola Rapor'),
                               value: 'kelola-rapor',
                             ),
-                            PopupMenuItem<String>(
+                            const PopupMenuItem<String>(
                               child: Text('Lihat Rapor'),
                               value: 'lihat-rapor',
                             ),
-                            PopupMenuItem<String>(
+                            const PopupMenuItem<String>(
                               child: Text('Hapus'),
                               value: 'hapus',
                             ),
@@ -84,8 +85,8 @@ class PlaygroupView extends GetView<PlaygroupController> {
                               context: context,
                               builder: (BuildContext context) {
                                 return AlertDialog(
-                                  title: Text('Konfirmasi Hapus'),
-                                  content: Text(
+                                  title: const Text('Konfirmasi Hapus'),
+                                  content: const Text(
                                       'Apakah Anda yakin ingin menghapus data murid ini?'),
                                   actions: [
                                     TextButton(
@@ -93,7 +94,7 @@ class PlaygroupView extends GetView<PlaygroupController> {
                                         // Batalkan penghapusan
                                         Navigator.of(context).pop();
                                       },
-                                      child: Text('Batal'),
+                                      child: const Text('Batal'),
                                     ),
                                     TextButton(
                                       onPressed: () async {
@@ -104,7 +105,7 @@ class PlaygroupView extends GetView<PlaygroupController> {
                                             .delete();
                                         Navigator.of(context).pop();
                                       },
-                                      child: Text('Hapus'),
+                                      child: const Text('Hapus'),
                                     ),
                                   ],
                                 );
@@ -124,7 +125,7 @@ class PlaygroupView extends GetView<PlaygroupController> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // Aksi saat tombol tambah murid ditekan
-          Get.toNamed("/add-murid");
+          Get.toNamed("/add-murid", arguments: controller.idPlaygroup);
         },
         backgroundColor: const Color.fromARGB(255, 244, 221, 10),
         child: const Icon(

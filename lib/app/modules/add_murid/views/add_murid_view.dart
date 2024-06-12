@@ -9,6 +9,7 @@ class AddMuridView extends GetView<AddMuridController> {
 
   @override
   Widget build(BuildContext context) {
+    String idKelas = Get.arguments;
     final size = MediaQuery.of(context).size;
     return Container(
       decoration: const BoxDecoration(
@@ -74,7 +75,7 @@ class AddMuridView extends GetView<AddMuridController> {
                         ElevatedButton(
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
-                              controller.saveDataToFirestore('A');
+                              controller.saveDataToFirestore(idKelas);
                             }
                           },
                           style: ElevatedButton.styleFrom(
@@ -90,63 +91,7 @@ class AddMuridView extends GetView<AddMuridController> {
                             ),
                           ),
                           child: const Text(
-                            "SIMPAN Kelas A",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 20), // Spasi antara tombol
-                        ElevatedButton(
-                          onPressed: () {
-                            if (_formKey.currentState!.validate()) {
-                              controller.saveDataToFirestore('B');
-                            }
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor:
-                                const Color.fromRGBO(0, 135, 27, 1),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
-                              side: const BorderSide(
-                                color: Color.fromRGBO(0, 135, 27, 1),
-                                width: 2,
-                                style: BorderStyle.solid,
-                              ),
-                            ),
-                          ),
-                          child: const Text(
-                            "SIMPAN Kelas B",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 20), // Spasi antara tombol
-                        ElevatedButton(
-                          onPressed: () {
-                            if (_formKey.currentState!.validate()) {
-                              controller.saveDataToFirestore('C');
-                            }
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor:
-                                const Color.fromRGBO(0, 135, 27, 1),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
-                              side: const BorderSide(
-                                color: Color.fromRGBO(0, 135, 27, 1),
-                                width: 2,
-                                style: BorderStyle.solid,
-                              ),
-                            ),
-                          ),
-                          child: const Text(
-                            "SIMPAN Playgroup",
+                            "SIMPAN",
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 18,

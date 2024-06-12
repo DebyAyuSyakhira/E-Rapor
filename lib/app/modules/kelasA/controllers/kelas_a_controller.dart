@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class KelasAController extends GetxController {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final Rx<List<DocumentSnapshot>> muridA = Rx<List<DocumentSnapshot>>([]);
+  String idA = Get.arguments;
 
   @override
   void onInit() {
@@ -11,9 +12,15 @@ class KelasAController extends GetxController {
     fetchMurid(); // Panggil fetchMurid saat controller diinisialisasi
   }
 
-  void fetchMurid() {
-    _firestore.collection('murid_a').snapshots().listen((snapshot) {
-      muridA.value = snapshot.docs;
-    });
-  }
+  void fetchMurid() async {
+    try {
+      final QuerySnapshot querySnapshot = await _firestore
+          .collection('student')
+          .where("student_class_id", isEqualTo: idA)
+          .get();
+      muridA.value = querySnapshot.docs;
+    } catch (error) {
+      print('Error while fetching data: $error');
+    }
+}
 }

@@ -55,7 +55,7 @@ class HomeView extends GetView<HomeController> {
                       ],
                     ),
                     IconButton(
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.exit_to_app,
                         color: Colors.white,
                         size: 30.0,
@@ -69,7 +69,7 @@ class HomeView extends GetView<HomeController> {
                   ],
                 ),
               ),
-              Spacer(flex: 2),
+              const Spacer(flex: 2),
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Center(
@@ -80,34 +80,34 @@ class HomeView extends GetView<HomeController> {
                       ClassCard(
                         className: 'PLAYGROUP',
                         onPressed: () {
-                          Get.toNamed("/playgroup");
+                          Get.toNamed("/playgroup", arguments: controller.idPlaygroup);
                           // Handle PLAYGROUP button press
                           print('Tombol PLAYGROUP ditekan');
-                        },
+                        }, studentCount: controller.jumlahPlaygroup,
                       ),
-                      SizedBox(height: 16.0),
+                      const SizedBox(height: 16.0),
                       ClassCard(
                         className: 'KELAS A',
                         onPressed: () {
-                          Get.toNamed("/kelas-a");
+                          Get.toNamed("/kelas-a", arguments: controller.idA);
                           // Handle KELAS A button press
                           print('Tombol KELAS A ditekan');
-                        },
+                        }, studentCount: controller.jumlahA,
                       ),
-                      SizedBox(height: 16.0),
+                      const SizedBox(height: 16.0),
                       ClassCard(
                         className: 'KELAS B',
                         onPressed: () {
-                          Get.toNamed("/kelas-b");
+                          Get.toNamed("/kelas-b", arguments: controller.idB);
                           // Handle KELAS B button press
                           print('Tombol KELAS B ditekan');
-                        },
+                        }, studentCount: controller.jumlahB,
                       ),
                     ],
                   ),
                 ),
               ),
-              Spacer(flex: 1),
+              const Spacer(flex: 1),
             ],
           ),
         ],
@@ -118,9 +118,10 @@ class HomeView extends GetView<HomeController> {
 
 class ClassCard extends StatefulWidget {
   final String className;
+  final int studentCount;
   final VoidCallback onPressed;
 
-  ClassCard({required this.className, required this.onPressed});
+  ClassCard({required this.className, required this.onPressed, required this.studentCount});
 
   @override
   _ClassCardState createState() => _ClassCardState();
@@ -149,13 +150,13 @@ class _ClassCardState extends State<ClassCard> {
         });
       },
       child: AnimatedContainer(
-        duration: Duration(milliseconds: 200),
+        duration: const Duration(milliseconds: 200),
         transform: Matrix4.identity()..scale(_isTapped ? 0.95 : 1.0),
         child: SizedBox(
           width: 327,
           height: 148.93,
           child: Card(
-            color: Color(0xFF00871B)
+            color: const Color(0xFF00871B)
                 .withOpacity(0.8), // Button color set to #00871B
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
@@ -167,16 +168,16 @@ class _ClassCardState extends State<ClassCard> {
                 children: [
                   Text(
                     widget.className,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 24.0,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 8.0),
+                  const SizedBox(height: 8.0),
                   Text(
-                    'Jumlah Murid :',
-                    style: TextStyle(
+                    'Jumlah Murid : ${widget.studentCount}',
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 18.0,
                     ),
