@@ -26,306 +26,298 @@ class RaporView extends GetView<RaporController> {
             icon: const Icon(Icons.arrow_back)),
         centerTitle: true,
       ),
-      body: ListView(
-        children: [
-          const SizedBox(
-            height: 20,
-          ),
-          const Center(
-            child: Text(
-              'LAPORAN PERKEMBANGAN ANAK',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-          ),
-          Container(
-            // color: Colors.red,
-            // width: double.infinity,
-            margin: const EdgeInsets.only(
-              left: 10,
-            ),
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: DataTable(
-                  horizontalMargin: 0,
-                  dataRowHeight: 30,
-                  headingTextStyle: const TextStyle(fontSize: 16),
-                  // border: TableBorder.all(),
-                  dividerThickness: 0.1,
-                  columnSpacing: 0.1,
-                  columns: const [
-                    DataColumn(
-                      label: Flexible(child: Text('')),
-                    ),
-                    DataColumn(
-                      label: Flexible(child: Text('')),
-                    ),
-                    DataColumn(
-                      label: Flexible(child: Text('')),
-                    ),
-                  ],
-                  rows: const [
-                    DataRow(cells: [
-                      DataCell(Flexible(
-                        child: Text(
-                          'Nama',overflow: TextOverflow.ellipsis,
-                          style: TextStyle(fontSize: 16, color: Colors.black),
+      body: FutureBuilder(
+        future: controller.fetchMuridDanRapor(),
+        builder: (context, snapshot) {
+          return ListView(
+            children: [
+              const SizedBox(
+                height: 20,
+              ),
+              const Center(
+                child: Text(
+                  'LAPORAN PERKEMBANGAN ANAK',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+              ),
+              Container(
+                // color: Colors.red,
+                // width: double.infinity,
+                margin: const EdgeInsets.only(
+                  left: 10,
+                ),
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: DataTable(
+                      horizontalMargin: 0,
+                      dataRowHeight: 30,
+                      headingTextStyle: const TextStyle(fontSize: 16),
+                      // border: TableBorder.all(),
+                      dividerThickness: 0.1,
+                      columnSpacing: 0.1,
+                      columns: const [
+                        DataColumn(
+                          label: Flexible(child: Text('')),
                         ),
-                      )),
-                      DataCell(Flexible(
-                        child: Text(' : ',overflow: TextOverflow.ellipsis,
-                            style: TextStyle(fontSize: 16, color: Colors.black)),
-                      )),
-                      DataCell(Flexible(
-                        child: Text('(nama)',overflow: TextOverflow.ellipsis,
-                            style: TextStyle(fontSize: 16, color: Colors.black)),
-                      )),
-                    ]),
-                    DataRow(cells: [
-                      DataCell(Flexible(
-                        
-                        child: Text('Nomor Induk',
-                            style: TextStyle(fontSize: 16, color: Colors.black)),
-                      )),
-                      DataCell(Flexible(
-                        child: Text(' : ',
-                            style: TextStyle(fontSize: 16, color: Colors.black)),
-                      )),
-                      DataCell(Flexible(
-                        child: Text('(nomor induk)',maxLines: 3,
-                            style: TextStyle(fontSize: 16, color: Colors.black)),
-                      )),
-                    ]),
-                    DataRow(cells: [
-                      DataCell(Text('Usia',
-                          style: TextStyle(fontSize: 16, color: Colors.black))),
-                      DataCell(Text(' : ',
-                          style: TextStyle(fontSize: 16, color: Colors.black))),
-                      DataCell(Text('(usia)',
-                          style: TextStyle(fontSize: 16, color: Colors.black))),
-                    ]),
-                    DataRow(cells: [
-                      DataCell(Text('Semester',
-                          style: TextStyle(fontSize: 16, color: Colors.black))),
-                      DataCell(Text(' : ',
-                          style: TextStyle(fontSize: 16, color: Colors.black))),
-                      DataCell(Text('(semester)',
-                          style: TextStyle(fontSize: 16, color: Colors.black))),
-                    ]),
-                    DataRow(cells: [
-                      DataCell(Text('Berat badan',
-                          style: TextStyle(fontSize: 16, color: Colors.black))),
-                      DataCell(Text(' : ',
-                          style: TextStyle(fontSize: 16, color: Colors.black))),
-                      DataCell(Text('(berat badan kg)',
-                          style: TextStyle(fontSize: 16, color: Colors.black))),
-                    ]),
-                    DataRow(cells: [
-                      DataCell(Text('Tinggi Badan',
-                          style: TextStyle(fontSize: 16, color: Colors.black))),
-                      DataCell(Text(' : ',
-                          style: TextStyle(fontSize: 16, color: Colors.black))),
-                      DataCell(Text('(tinggi badan cm)',
-                          style: TextStyle(fontSize: 16, color: Colors.black))),
-                    ]),
-                    DataRow(cells: [
-                      DataCell(Text('Izin',
-                          style: TextStyle(fontSize: 16, color: Colors.black))),
-                      DataCell(Text(' : ',
-                          style: TextStyle(fontSize: 16, color: Colors.black))),
-                      DataCell(Text('(izin hari)',
-                          style: TextStyle(fontSize: 16, color: Colors.black))),
-                    ]),
-                    DataRow(cells: [
-                      DataCell(Text('Sakit',
-                          style: TextStyle(fontSize: 16, color: Colors.black))),
-                      DataCell(Text(' : ',
-                          style: TextStyle(fontSize: 16, color: Colors.black))),
-                      DataCell(Text('(sakit hari)',
-                          style: TextStyle(fontSize: 16, color: Colors.black))),
-                    ]),
-                    DataRow(cells: [
-                      DataCell(Text('Tanpa Ket',
-                          style: TextStyle(fontSize: 16, color: Colors.black))),
-                      DataCell(Text(' : ',
-                          style: TextStyle(fontSize: 16, color: Colors.black))),
-                      DataCell(Text('(tanpa ket hari)',
-                          style: TextStyle(fontSize: 16, color: Colors.black))),
-                    ])
-                  ]),
-            ),
-          ),
-          const SizedBox(
-            height: 15,
-          ),
-          Container(
-              alignment: Alignment.topLeft,
-              margin: const EdgeInsets.symmetric(horizontal: 10),
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black, width: 2),
-                  borderRadius: BorderRadius.circular(5)),
-              child: Column(
-                children: [
-                  Container(
-                      padding: const EdgeInsets.only(left: 5),
-                      child: const Text(
-                        "Perkembangan Nilai Agama dan Moral",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 16),
-                      )),
-                  Container(
-                    padding: const EdgeInsets.only(left: 5),
-                    child: const Text(
-                      "Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text ",
-                      style: TextStyle(fontSize: 15, height: 1.5),
-                      maxLines: 10,
-                    ),
-                  ),
-                ],
-              )),
-          const SizedBox(
-            height: 20,
-          ),
-          Container(
-              alignment: Alignment.topLeft,
-              margin: const EdgeInsets.symmetric(horizontal: 10),
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black, width: 2),
-                  borderRadius: BorderRadius.circular(5)),
-              child: Column(
-                children: [
-                  Container(
-                      padding: const EdgeInsets.only(left: 5),
-                      child: const Text(
-                        "Perkembangan Motorik",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 16),
-                      )),
-                  Container(
-                    padding: const EdgeInsets.only(left: 5),
-                    child: const Text(
-                      "Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text ",
-                      style: TextStyle(fontSize: 15, height: 1.5),
-                      maxLines: 10,
-                    ),
-                  ),
-                ],
-              )),
-          const SizedBox(
-            height: 20,
-          ),
-          Container(
-              alignment: Alignment.topLeft,
-              margin: const EdgeInsets.symmetric(horizontal: 10),
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black, width: 2),
-                  borderRadius: BorderRadius.circular(5)),
-              child: Column(
-                children: [
-                  Container(
-                      padding: const EdgeInsets.only(left: 5),
-                      child: const Text(
-                        "Perkembangan Kognitif",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 16),
-                      )),
-                  Container(
-                    padding: const EdgeInsets.only(left: 5),
-                    child: const Text(
-                      "Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text ",
-                      style: TextStyle(fontSize: 15, height: 1.5),
-                      maxLines: 10,
-                    ),
-                  ),
-                ],
-              )),
-          const SizedBox(
-            height: 20,
-          ),
-          Container(
-              alignment: Alignment.topLeft,
-              margin: const EdgeInsets.symmetric(horizontal: 10),
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black, width: 2),
-                  borderRadius: BorderRadius.circular(5)),
-              child: Column(
-                children: [
-                  Container(
-                      padding: const EdgeInsets.only(left: 5),
-                      child: const Text(
-                        "Perkembangan Sosial Emosional",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 16),
-                      )),
-                  Container(
-                    padding: const EdgeInsets.only(left: 5),
-                    child: const Text(
-                      "Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text ",
-                      style: TextStyle(fontSize: 15, height: 1.5),
-                      maxLines: 10,
-                    ),
-                  ),
-                ],
-              )),
-          const SizedBox(
-            height: 20,
-          ),
-          Container(
-              alignment: Alignment.topLeft,
-              margin: const EdgeInsets.symmetric(horizontal: 10),
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black, width: 2),
-                  borderRadius: BorderRadius.circular(5)),
-              child: Column(
-                children: [
-                  Container(
-                      padding: const EdgeInsets.only(left: 5),
-                      child: const Text(
-                        "Perkembangan Bahasa",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 16),
-                      )),
-                  Container(
-                    padding: const EdgeInsets.only(left: 5),
-                    child: const Text(
-                      "Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text ",
-                      style: TextStyle(fontSize: 15, height: 1.5),
-                      maxLines: 10,
-                    ),
-                  ),
-                ],
-              )),
-          const SizedBox(
-            height: 20,
-          ),
-          Container(
-              alignment: Alignment.topLeft,
-              margin: const EdgeInsets.symmetric(horizontal: 10),
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black, width: 2),
-                  borderRadius: BorderRadius.circular(5)),
-              child: Column(
-                children: [
-                  Container(
-                      padding: const EdgeInsets.only(left: 5),
-                      child: const Text(
-                        "Perkembangan Seni",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 16),
-                      )),
-                  Container(
-                    padding: const EdgeInsets.only(left: 5),
-                    child: const Text(
-                      "Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text Dummy Text ",
-                      style: TextStyle(fontSize: 15, height: 1.5),
-                      maxLines: 10,
-                    ),
-                  ),
-                ],
-              )),
-          const SizedBox(
-            height: 15,
-          )
-        ],
+                        DataColumn(
+                          label: Flexible(child: Text('')),
+                        ),
+                        DataColumn(
+                          label: Flexible(child: Text('')),
+                        ),
+                      ],
+                      rows: [
+                        DataRow(cells: [
+                          const DataCell(Text(
+                            'Nama',overflow: TextOverflow.ellipsis,
+                            style: TextStyle(fontSize: 16, color: Colors.black),
+                          )),
+                          const DataCell(Text(' : ',overflow: TextOverflow.ellipsis,
+                              style: TextStyle(fontSize: 16, color: Colors.black))),
+                          DataCell(Text('${controller.dataMurid["name"]}',overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(fontSize: 16, color: Colors.black))),
+                        ]),
+                        DataRow(cells: [
+                          const DataCell(Text('Nomor Induk',
+                              style: TextStyle(fontSize: 16, color: Colors.black))),
+                          const DataCell(Text(' : ',
+                              style: TextStyle(fontSize: 16, color: Colors.black))),
+                          DataCell(Text('${controller.dataMurid["id_number"]}',maxLines: 3,
+                              style: const TextStyle(fontSize: 16, color: Colors.black))),
+                        ]),
+                        DataRow(cells: [
+                          const DataCell(Text('Usia',
+                              style: TextStyle(fontSize: 16, color: Colors.black))),
+                          const DataCell(Text(' : ',
+                              style: TextStyle(fontSize: 16, color: Colors.black))),
+                          DataCell(Text('${controller.dataMurid["age"]}',
+                              style: const TextStyle(fontSize: 16, color: Colors.black))),
+                        ]),
+                        DataRow(cells: [
+                          const DataCell(Text('Semester',
+                              style: TextStyle(fontSize: 16, color: Colors.black))),
+                          const DataCell(Text(' : ',
+                              style: TextStyle(fontSize: 16, color: Colors.black))),
+                          DataCell(Text('${controller.dataRapor["semester"]}',
+                              style: const TextStyle(fontSize: 16, color: Colors.black))),
+                        ]),
+                        DataRow(cells: [
+                          const DataCell(Text('Berat badan',
+                              style: TextStyle(fontSize: 16, color: Colors.black))),
+                          const DataCell(Text(' : ',
+                              style: TextStyle(fontSize: 16, color: Colors.black))),
+                          DataCell(Text('${controller.dataRapor["body_weight"]}',
+                              style: const TextStyle(fontSize: 16, color: Colors.black))),
+                        ]),
+                        DataRow(cells: [
+                          const DataCell(Text('Tinggi Badan',
+                              style: TextStyle(fontSize: 16, color: Colors.black))),
+                          const DataCell(Text(' : ',
+                              style: TextStyle(fontSize: 16, color: Colors.black))),
+                          DataCell(Text('${controller.dataRapor["body_height"]}',
+                              style: const TextStyle(fontSize: 16, color: Colors.black))),
+                        ]),
+                        DataRow(cells: [
+                          const DataCell(Text('Izin',
+                              style: TextStyle(fontSize: 16, color: Colors.black))),
+                          const DataCell(Text(' : ',
+                              style: TextStyle(fontSize: 16, color: Colors.black))),
+                          DataCell(Text('${controller.dataRapor["number_of_permit_days"]}',
+                              style: const TextStyle(fontSize: 16, color: Colors.black))),
+                        ]),
+                        DataRow(cells: [
+                          const DataCell(Text('Sakit',
+                              style: TextStyle(fontSize: 16, color: Colors.black))),
+                          const DataCell(Text(' : ',
+                              style: TextStyle(fontSize: 16, color: Colors.black))),
+                          DataCell(Text('${controller.dataRapor["number_of_sick_days"]}',
+                              style: const TextStyle(fontSize: 16, color: Colors.black))),
+                        ]),
+                        DataRow(cells: [
+                          const DataCell(Text('Tanpa Ket',
+                              style: TextStyle(fontSize: 16, color: Colors.black))),
+                          const DataCell(Text(' : ',
+                              style: TextStyle(fontSize: 16, color: Colors.black))),
+                          DataCell(Text('${controller.dataRapor["number_of_days_without_information"]}',
+                              style: const TextStyle(fontSize: 16, color: Colors.black))),
+                        ])
+                      ]),
+                ),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              Container(
+                  alignment: Alignment.topLeft,
+                  margin: const EdgeInsets.symmetric(horizontal: 10),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black, width: 2),
+                      borderRadius: BorderRadius.circular(5)),
+                  child: Column(
+                    children: [
+                      Container(
+                          padding: const EdgeInsets.only(left: 5),
+                          child: const Text(
+                            "Perkembangan Nilai Agama dan Moral",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 16),
+                          )),
+                      Container(
+                        padding: const EdgeInsets.only(left: 5),
+                        child: Text(
+                          "${controller.dataRapor["religious_and_moral_values_development"]}",
+                          style: const TextStyle(fontSize: 15, height: 1.5),
+                          maxLines: 10,
+                        ),
+                      ),
+                    ],
+                  )),
+              const SizedBox(
+                height: 20,
+              ),
+              Container(
+                  alignment: Alignment.topLeft,
+                  margin: const EdgeInsets.symmetric(horizontal: 10),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black, width: 2),
+                      borderRadius: BorderRadius.circular(5)),
+                  child: Column(
+                    children: [
+                      Container(
+                          padding: const EdgeInsets.only(left: 5),
+                          child: const Text(
+                            "Perkembangan Motorik",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 16),
+                          )),
+                      Container(
+                        padding: const EdgeInsets.only(left: 5),
+                        child: Text(
+                          "${controller.dataRapor["physical_development"]}",
+                          style: const TextStyle(fontSize: 15, height: 1.5),
+                          maxLines: 10,
+                        ),
+                      ),
+                    ],
+                  )),
+              const SizedBox(
+                height: 20,
+              ),
+              Container(
+                  alignment: Alignment.topLeft,
+                  margin: const EdgeInsets.symmetric(horizontal: 10),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black, width: 2),
+                      borderRadius: BorderRadius.circular(5)),
+                  child: Column(
+                    children: [
+                      Container(
+                          padding: const EdgeInsets.only(left: 5),
+                          child: const Text(
+                            "Perkembangan Kognitif",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 16),
+                          )),
+                      Container(
+                        padding: const EdgeInsets.only(left: 5),
+                        child: Text(
+                          "${controller.dataRapor["cognitive_development"]}",
+                          style: const TextStyle(fontSize: 15, height: 1.5),
+                          maxLines: 10,
+                        ),
+                      ),
+                    ],
+                  )),
+              const SizedBox(
+                height: 20,
+              ),
+              Container(
+                  alignment: Alignment.topLeft,
+                  margin: const EdgeInsets.symmetric(horizontal: 10),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black, width: 2),
+                      borderRadius: BorderRadius.circular(5)),
+                  child: Column(
+                    children: [
+                      Container(
+                          padding: const EdgeInsets.only(left: 5),
+                          child: const Text(
+                            "Perkembangan Sosial Emosional",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 16),
+                          )),
+                      Container(
+                        padding: const EdgeInsets.only(left: 5),
+                        child: Text(
+                          "${controller.dataRapor["social_emotional_development"]}",
+                          style: const TextStyle(fontSize: 15, height: 1.5),
+                          maxLines: 10,
+                        ),
+                      ),
+                    ],
+                  )),
+              const SizedBox(
+                height: 20,
+              ),
+              Container(
+                  alignment: Alignment.topLeft,
+                  margin: const EdgeInsets.symmetric(horizontal: 10),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black, width: 2),
+                      borderRadius: BorderRadius.circular(5)),
+                  child: Column(
+                    children: [
+                      Container(
+                          padding: const EdgeInsets.only(left: 5),
+                          child: const Text(
+                            "Perkembangan Bahasa",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 16),
+                          )),
+                      Container(
+                        padding: const EdgeInsets.only(left: 5),
+                        child: Text(
+                          "${controller.dataRapor["language_development"]}",
+                          style: const TextStyle(fontSize: 15, height: 1.5),
+                          maxLines: 10,
+                        ),
+                      ),
+                    ],
+                  )),
+              const SizedBox(
+                height: 20,
+              ),
+              Container(
+                  alignment: Alignment.topLeft,
+                  margin: const EdgeInsets.symmetric(horizontal: 10),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black, width: 2),
+                      borderRadius: BorderRadius.circular(5)),
+                  child: Column(
+                    children: [
+                      Container(
+                          padding: const EdgeInsets.only(left: 5),
+                          child: const Text(
+                            "Perkembangan Seni",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 16),
+                          )),
+                      Container(
+                        padding: const EdgeInsets.only(left: 5),
+                        child: Text(
+                          "${controller.dataRapor["artistic_development"]}",
+                          style: const TextStyle(fontSize: 15, height: 1.5),
+                          maxLines: 10,
+                        ),
+                      ),
+                    ],
+                  )),
+              const SizedBox(
+                height: 15,
+              )
+            ],
+          );
+        }
       ),
     );
   }

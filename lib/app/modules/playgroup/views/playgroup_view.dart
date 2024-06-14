@@ -8,7 +8,7 @@ class PlaygroupView extends GetView<PlaygroupController> {
 
   @override
   Widget build(BuildContext context) {
-    controller.fetchData();
+    
     return Scaffold(
       appBar: AppBar(
         title: const Text('DAFTAR MURID PLAYGROUP'), // Judul AppBar
@@ -75,7 +75,7 @@ class PlaygroupView extends GetView<PlaygroupController> {
                           // Tambahkan logika untuk setiap opsi di sini
                           if (value == 'kelola-rapor') {
                             // Navigasi ke halaman kelola-rapor saat 'Lihat Rapor' dipilih
-                            Get.toNamed("/nilai-playgroup");
+                            Get.toNamed("/nilai-playgroup", arguments: muridList[index].id);
                           } else if (value == 'lihat-rapor') {
                             // Navigasi ke halaman rapor saat 'Ubah Data' dipilih
                             Get.toNamed("/rapor");

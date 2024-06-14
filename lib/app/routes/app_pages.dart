@@ -14,10 +14,6 @@ import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
 import '../modules/nilai_a/bindings/nilai_a_binding.dart';
 import '../modules/nilai_a/views/nilai_a_view.dart';
-import '../modules/nilai_b/bindings/nilai_b_binding.dart';
-import '../modules/nilai_b/views/nilai_b_view.dart';
-import '../modules/nilai_playgroup/bindings/nilai_playgroup_binding.dart';
-import '../modules/nilai_playgroup/views/nilai_playgroup_view.dart';
 import '../modules/playgroup/bindings/playgroup_binding.dart';
 import '../modules/playgroup/views/playgroup_view.dart';
 import '../modules/rapor/bindings/rapor_binding.dart';
@@ -84,6 +80,8 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.KELAS_A,
+      // transition: Transition.leftToRight,
+      // transitionDuration: Duration(seconds: 1),
       page: () => KelasAView(),
       binding: KelasABinding(),
     ),
@@ -93,19 +91,9 @@ class AppPages {
       binding: KelasBBinding(),
     ),
     GetPage(
-      name: _Paths.NILAI_PLAYGROUP,
-      page: () => NilaiPlaygroupView(),
-      binding: NilaiPlaygroupBinding(),
-    ),
-    GetPage(
       name: _Paths.NILAI_A,
       page: () => NilaiAView(),
       binding: NilaiABinding(),
-    ),
-    GetPage(
-      name: _Paths.NILAI_B,
-      page: () => NilaiBView(),
-      binding: NilaiBBinding(),
-    ),
+    )
   ];
 }

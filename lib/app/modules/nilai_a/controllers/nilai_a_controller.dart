@@ -5,23 +5,32 @@ import 'package:get/get.dart';
 
 class NilaiAController extends GetxController {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  final Rx<DocumentSnapshot?> muridA =
-      Rx<DocumentSnapshot?>(null); // Menggunakan tipe data tunggal
+  Map<String, dynamic> data = {};
+  
+  // Rx<DocumentSnapshot?> muridA =
+  //     Rx<DocumentSnapshot?>(null); // Menggunakan tipe data tunggal
+  String idMurid = Get.arguments;
 
-  @override
-  void onInit() {
-    super.onInit();
-    fetchMurid(); // Panggil fetchMurid saat controller diinisialisasi
-  }
+  // @override
+  // void onInit() {
+  //   super.onInit();
+  //   // // if 
+  //   // // (Get.arguments != null) {
+  //   // //   idMurid = Get.arguments as String;
+  //   //   fetchMurid();}
+  //     fetchMurid();
+  //     print(idMurid);
+  //    // Panggil fetchMurid saat controller diinisialisasi
+  // }
 
-  void fetchMurid() {
-    _firestore
-        .collection('murid_a')
-        .doc('id')
-        .snapshots()
-        .listen((snapshot) {
-      muridA.value = snapshot; // Menggunakan nilai tunggal daripada daftar
-    });
+  Future <void> fetchMurid() async {
+    DocumentSnapshot doc =
+        await _firestore.collection('student').doc(idMurid).get();
+    data = doc.data() as Map<String, dynamic>;
+    // print(doc.data() as Map<String, dynamic>);
+    print(data["name"]);
+    print(data["id_number"]);
+    print(data["age"]);
   }
 
   var selectedSemester = ''.obs; // Observable variable for selected semester
@@ -52,19 +61,20 @@ class NilaiAController extends GetxController {
       String sakit,
       String tanpaKeterangan) async {
     try {
-      await firestore.collection('rapor_a').add({
-        'selectedSemester': selectedSemester.value, // Add selected semester
-        'agama': agama,
-        'motorik': motorik,
-        'kognitif': kognitif,
-        'sosial': sosial,
-        'bahasa': bahasa,
-        'seni': seni,
-        'beratBadan': beratBadan,
-        'tinggi': tinggiBadan,
-        'izin': izin,
-        'sakit': sakit,
-        'tanpaKeterangan': tanpaKeterangan
+      await firestore.collection('student_report').add({
+        'student_id': idMurid,
+        'semester': selectedSemester.value, // Add selected semester
+        'religious_and_moral_values_development': agama,
+        'physical_development': motorik,
+        'cognitive_development': kognitif,
+        'social_emotional_development': sosial,
+        'language_development': bahasa,
+        'artistic_development': seni,
+        'body_weight': beratBadan,
+        'body_height': tinggiBadan,
+        'number_of_permit_days': izin,
+        'number_of_sick_days': sakit,
+        'number_of_days_without_information': tanpaKeterangan
       });
       Get.back();
       Get.snackbar('Success', 'Data added successfully');

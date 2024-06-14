@@ -50,6 +50,9 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
                   ),
                 ),
               ),
+              Container(
+                child: Image.asset("images/reset.png"),
+              ),
               Form(
                 key: controller.formKey,
                 child: Column(

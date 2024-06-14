@@ -1,3 +1,4 @@
+import 'package:e_rapor/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -76,10 +77,12 @@ class KelasAView extends GetView<KelasAController> {
                           // Tambahkan logika untuk setiap opsi di sini
                           if (value == 'kelola-rapor') {
                             // Navigasi ke halaman kelola-rapor saat 'Lihat Rapor' dipilih
-                            Get.toNamed("/nilai-playgroup");
+                            Get.toNamed(Routes.NILAI_A,
+                                arguments: muridList[index].id);
                           } else if (value == 'lihat-rapor') {
                             // Navigasi ke halaman rapor saat 'Ubah Data' dipilih
-                            Get.toNamed("/rapor");
+                            Get.toNamed(Routes.RAPOR,
+                                arguments: {"idMurid": muridList[index].id, 'semester': 'Semester 1'});
                           } else if (value == 'hapus') {
                             // Hapus data saat 'Hapus' dipilih
                             showDialog(
