@@ -1,5 +1,6 @@
 import 'package:e_rapor/app/modules/register/controllers/register_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 // import 'package:google_fonts/google_fonts.dart';
 
@@ -64,7 +65,10 @@ class RegisterView extends GetView<RegisterController> {
                     customTextFormField(
                       textEditingController: controller.phoneNumberController,
                       hintText: "Nomor Telepon",
-                      keyboardType: TextInputType.phone,
+                      keyboardType: TextInputType.number,
+                      inputFormatters: <TextInputFormatter>[
+                        FilteringTextInputFormatter.digitsOnly
+                      ],
                     ),
                     const SizedBox(height: 30),
                     customTextFormField(
@@ -73,10 +77,20 @@ class RegisterView extends GetView<RegisterController> {
                       keyboardType: TextInputType.emailAddress,
                     ),
                     const SizedBox(height: 30),
-                    customTextFormField(
-                      textEditingController: controller.passwordController,
-                      hintText: "Kata Sandi",
-                      isTextObscured: true,
+                    Obx(() => customTextFormField(
+                        textEditingController: controller.passwordController,
+                        hintText: "Kata Sandi",
+                        isTextObscured: controller.isPasswordVisible.value,
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            controller.isPasswordVisible.value
+                                ? Icons.visibility_off
+                                : Icons.visibility,
+                            color: const Color.fromRGBO(0, 135, 27, 1),
+                          ),
+                          onPressed: controller.togglePasswordVisibility,
+                        ),
+                      )
                     ),
                     const SizedBox(height: 50),
                     SizedBox(
@@ -160,6 +174,8 @@ class RegisterView extends GetView<RegisterController> {
     required String hintText,
     TextInputType keyboardType = TextInputType.text,
     bool isTextObscured = false,
+    List<TextInputFormatter>? inputFormatters,
+    Widget? suffixIcon,
   }) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -167,6 +183,7 @@ class RegisterView extends GetView<RegisterController> {
         controller: textEditingController,
         keyboardType: keyboardType,
         obscureText: isTextObscured,
+        inputFormatters: inputFormatters,
         validator: (value) {
           if (value == null || value.isEmpty) {
             return "$hintText tidak boleh kosong";
@@ -188,6 +205,7 @@ class RegisterView extends GetView<RegisterController> {
             fontSize: 16,
             fontWeight: FontWeight.w500,
           ),
+          suffixIcon: suffixIcon,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(5),
             borderSide: const BorderSide(

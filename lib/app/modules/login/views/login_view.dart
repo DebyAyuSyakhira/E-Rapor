@@ -63,10 +63,20 @@ class LoginView extends GetView<LoginController> {
                       keyboardType: TextInputType.emailAddress,
                     ),
                     const SizedBox(height: 30),
-                    customTextFormField(
-                      textEditingController: controller.passwordController,
-                      hintText: "Kata Sandi",
-                      isTextObscured: true,
+                    Obx(() => customTextFormField(
+                        textEditingController: controller.passwordController,
+                        hintText: "Kata Sandi",
+                        isTextObscured: controller.isPasswordVisible.value,
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            controller.isPasswordVisible.value
+                                ? Icons.visibility_off
+                                : Icons.visibility,
+                            color: const Color.fromRGBO(0, 135, 27, 1),
+                          ),
+                          onPressed: controller.togglePasswordVisibility,
+                        ),
+                      )
                     ),
                     const SizedBox(height: 50),
                     SizedBox(
@@ -163,6 +173,7 @@ class LoginView extends GetView<LoginController> {
     required String hintText,
     TextInputType keyboardType = TextInputType.text,
     bool isTextObscured = false,
+    Widget? suffixIcon,
   }) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -191,6 +202,7 @@ class LoginView extends GetView<LoginController> {
             fontSize: 16,
             fontWeight: FontWeight.w500,
           ),
+          suffixIcon: suffixIcon,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(5),
             borderSide: const BorderSide(

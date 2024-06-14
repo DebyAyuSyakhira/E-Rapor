@@ -10,6 +10,7 @@ class LoginController extends GetxController {
   final TextEditingController passwordController = TextEditingController();
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final RegisterController _registerController = Get.put(RegisterController());
+  var isPasswordVisible = true.obs;
 
   void clearInputText() {
     emailController.clear();
@@ -21,17 +22,27 @@ class LoginController extends GetxController {
     required String password,
   }) async {
     try {
-      await _firebaseAuth.signInWithEmailAndPassword(
+      // await _firebaseAuth.signInWithEmailAndPassword(
+      //   email: email,
+      //   password: password,
+      // );
+      // customSnackBar(
+      //   "Berhasil",
+      //   "Anda berhasil masuk.",
+      // );
+      // Get.offAllNamed(Routes.HOME);
+      // clearInputText();
+      UserCredential userCredential = await _firebaseAuth.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
-      customSnackBar(
-        "Berhasil",
-        "Anda berhasil masuk.",
-      );
-      Get.offAllNamed(Routes.HOME);
-      clearInputText();
-      _registerController.clearInputText();
+      if (userCredential.user!.emailVerified) {
+          customSnackBar('Success', 'User logged in successfully');
+          Get.offAllNamed(Routes.HOME);
+          _registerController.clearInputText();
+        } else {
+          customSnackBar('Error', 'Please verify your email');
+        }
     } on FirebaseAuthException catch (error) {
       if (error.code == "user-not-found") {
         customSnackBar(
@@ -82,10 +93,14 @@ class LoginController extends GetxController {
     );
   }
 
-  @override
-  void onClose() {
-    emailController.dispose();
-    passwordController.dispose();
-    super.onClose();
+  // @override
+  // void onClose() {
+  //   emailController.dispose();
+  //   passwordController.dispose();
+  //   super.onClose();
+  // }
+
+  void togglePasswordVisibility() {
+    isPasswordVisible.value = !isPasswordVisible.value;
   }
 }

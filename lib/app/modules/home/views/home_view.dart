@@ -5,9 +5,8 @@ import 'package:get/get.dart';
 
 import '../controllers/home_controller.dart';
 
-// ignore: must_be_immutable
 class HomeView extends GetView<HomeController> {
-  HomeView({super.key});
+  const HomeView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,25 +32,25 @@ class HomeView extends GetView<HomeController> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Column(
+                    Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
+                        const Text(
                           'Welcome,',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 24.0,
+                            fontSize: 24,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        Text(
-                          'Users!',
-                          style: TextStyle(
+                        Obx(() => Text(
+                          controller.username.value,
+                          style: const TextStyle(
                             color: Colors.white,
                             fontSize: 24.0,
                             fontWeight: FontWeight.bold,
                           ),
-                        ),
+                        )),
                       ],
                     ),
                     IconButton(

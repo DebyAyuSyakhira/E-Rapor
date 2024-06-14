@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,12 +11,14 @@ class HomeController extends GetxController {
   String idPlaygroup = "";
   String idA = "";
   String idB = "";
+  var username = "".obs;
 
   @override
   void onInit() {
     fetch_playgroup();
     fetch_A();
     fetch_B();
+    fetch_user();
     super.onInit();
   }
 
@@ -52,6 +55,18 @@ class HomeController extends GetxController {
           jumlahB = data["student_count"];
     } catch (error) {
       print('Error fetching murid for class A: $error');
+    }
+  }
+
+  void fetch_user() async {
+    try {
+      User? user = FirebaseAuth.instance.currentUser;
+      if (user != null) {
+        final DocumentSnapshot userDoc = await _firestore.collection('users').doc(user.uid).get();
+        username.value = userDoc['name'] ?? 'User';
+      }
+    } catch (error) {
+      print('Error fetching user name: $error');
     }
   }
 }

@@ -13,15 +13,18 @@ class RegisterController extends GetxController {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final CollectionReference _userReference =
       FirebaseFirestore.instance.collection("users");
+      
+  var username = ''.obs;
+  var isPasswordVisible = true.obs;
 
-  @override
-  void onClose() {
-    nameController.dispose();
-    emailController.dispose();
-    phoneNumberController.dispose();
-    passwordController.dispose();
-    super.onClose();
-  }
+  // @override
+  // void onClose() {
+  //   nameController.dispose();
+  //   emailController.dispose();
+  //   phoneNumberController.dispose();
+  //   passwordController.dispose();
+  //   super.onClose();
+  // }
 
   void clearInputText() {
     nameController.clear();
@@ -49,12 +52,29 @@ class RegisterController extends GetxController {
         email: email,
       );
       _userReference.doc(user.id).set(user.toJson());
-      customSnackBar(
-        "Berhasil",
-        "Akun Anda berhasil dibuat.",
-      );
-      Get.offAllNamed(Routes.LOGIN);
-      clearInputText();
+      username.value = name;
+      
+      // customSnackBar(
+      //   "Berhasil",
+      //   "Akun Anda berhasil dibuat.",
+      // );
+      userCredential.user!.sendEmailVerification();
+        Get.defaultDialog(
+          title: 'Verify your email',
+          middleText:'Please verify your email to continue. We have sent you an email verification link.',
+          textConfirm: 'OK',
+          textCancel: 'Resend',
+          buttonColor: const Color.fromRGBO(0, 135, 27, 1),
+          confirmTextColor: Colors.black,
+          onConfirm: () {
+            Get.offAllNamed(Routes.LOGIN);
+            clearInputText();
+          },
+          onCancel: () {
+            userCredential.user!.sendEmailVerification();
+            customSnackBar('Success', 'Email verification link sent');
+          },
+        );
     } on FirebaseAuthException catch (error) {
       if (error.code == "weak-password") {
         customSnackBar(
@@ -93,5 +113,9 @@ class RegisterController extends GetxController {
               ? Colors.green
               : Colors.grey,
     );
+  }
+
+  void togglePasswordVisibility() {
+    isPasswordVisible.value = !isPasswordVisible.value;
   }
 }

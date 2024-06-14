@@ -1,4 +1,5 @@
 import 'package:e_rapor/app/routes/app_pages.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/splash_controller.dart';
@@ -7,9 +8,14 @@ class SplashView extends GetView<SplashController> {
   const SplashView({super.key});
   @override
   Widget build(BuildContext context) {
-    Future.delayed(const Duration(seconds: 5), () {
-      Get.offNamed(Routes.LOGIN);
-    });
+   Future.delayed(const Duration(seconds: 5), (() {
+      if (FirebaseAuth.instance.currentUser != null &&
+          FirebaseAuth.instance.currentUser!.emailVerified) {
+        Get.offAllNamed(Routes.HOME);
+      } else {
+        Get.offAllNamed(Routes.LOGIN);
+      }
+    }));
     return Scaffold(
       body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
