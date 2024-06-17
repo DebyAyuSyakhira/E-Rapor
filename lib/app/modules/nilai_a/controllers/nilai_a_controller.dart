@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 class NilaiAController extends GetxController {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   Map<String, dynamic> data = {};
-  
+
   // Rx<DocumentSnapshot?> muridA =
   //     Rx<DocumentSnapshot?>(null); // Menggunakan tipe data tunggal
   String idMurid = Get.arguments;
@@ -14,7 +14,7 @@ class NilaiAController extends GetxController {
   // @override
   // void onInit() {
   //   super.onInit();
-  //   // // if 
+  //   // // if
   //   // // (Get.arguments != null) {
   //   // //   idMurid = Get.arguments as String;
   //   //   fetchMurid();}
@@ -23,7 +23,7 @@ class NilaiAController extends GetxController {
   //    // Panggil fetchMurid saat controller diinisialisasi
   // }
 
-  Future <void> fetchMurid() async {
+  Future<void> fetchMurid() async {
     DocumentSnapshot doc =
         await _firestore.collection('student').doc(idMurid).get();
     data = doc.data() as Map<String, dynamic>;

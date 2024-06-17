@@ -16,13 +16,10 @@ class KelasBView extends GetView<KelasBController> {
         title: const Text('DAFTAR MURID KELAS B'), // Judul AppBar
         centerTitle: true,
         titleTextStyle: const TextStyle(
-          color: Colors.white,
-          fontSize: 20,
-          fontWeight: FontWeight.bold
-        ),
+            color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
         backgroundColor: const Color.fromRGBO(0, 135, 27, 1),
         iconTheme: const IconThemeData(
-          color: Colors.white, 
+          color: Colors.white,
         ),
       ),
       body: Obx(() {
@@ -58,13 +55,15 @@ class KelasBView extends GetView<KelasBController> {
                     ),
                     child: ListTile(
                       title: Text(
-                        murid['name'], 
-                        style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+                        murid['name'],
+                        style: const TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.w600),
                       ),
                       trailing: Transform.translate(
                         offset: const Offset(16, 0),
                         child: PopupMenuButton<String>(
-                          icon: const Icon(Icons.more_vert, color: Colors.white),
+                          icon:
+                              const Icon(Icons.more_vert, color: Colors.white),
                           itemBuilder: (context) {
                             return <PopupMenuEntry<String>>[
                               const PopupMenuItem<String>(
@@ -73,7 +72,11 @@ class KelasBView extends GetView<KelasBController> {
                               ),
                               const PopupMenuItem<String>(
                                 value: 'lihat-rapor',
-                                child: Text('Lihat Rapor'),
+                                child: Text('Rapor Semester 1'),
+                              ),
+                              const PopupMenuItem<String>(
+                                value: 'lihat-rapor2',
+                                child: Text('Rapor Semester 2'),
                               ),
                               const PopupMenuItem<String>(
                                 value: 'hapus',
@@ -85,10 +88,20 @@ class KelasBView extends GetView<KelasBController> {
                             // Tambahkan logika untuk setiap opsi di sini
                             if (value == 'kelola-rapor') {
                               // Navigasi ke halaman kelola-rapor saat 'Lihat Rapor' dipilih
-                              Get.toNamed("/nilai-playgroup");
+                              Get.toNamed(Routes.NILAI_A,
+                                  arguments: muridList[index].id);
                             } else if (value == 'lihat-rapor') {
                               // Navigasi ke halaman rapor saat 'Ubah Data' dipilih
-                              Get.toNamed("/rapor");
+                              Get.toNamed(Routes.RAPOR, arguments: {
+                                "idMurid": muridList[index].id,
+                                'semester': 'Semester 1'
+                              });
+                            } else if (value == 'lihat-rapor2') {
+                              // Navigasi ke halaman rapor saat 'Ubah Data' dipilih
+                              Get.toNamed(Routes.RAPOR, arguments: {
+                                "idMurid": muridList[index].id,
+                                'semester': 'Semester 2'
+                              });
                             } else if (value == 'hapus') {
                               // Hapus data saat 'Hapus' dipilih
                               showDialog(

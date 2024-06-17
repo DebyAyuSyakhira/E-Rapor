@@ -10,19 +10,18 @@ class PlaygroupView extends GetView<PlaygroupController> {
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       appBar: AppBar(
-        title: const Text('DAFTAR MURID PLAYGROUP'), 
+        title: const Text('DAFTAR MURID PLAYGROUP'),
         centerTitle: true,
         titleTextStyle: const TextStyle(
           color: Colors.white,
           fontSize: 20,
-          fontWeight: FontWeight.bold, 
+          fontWeight: FontWeight.bold,
         ),
         backgroundColor: const Color.fromRGBO(0, 135, 27, 1),
         iconTheme: const IconThemeData(
-          color: Colors.white, 
+          color: Colors.white,
         ),
       ),
       body: Obx(() {
@@ -43,7 +42,8 @@ class PlaygroupView extends GetView<PlaygroupController> {
               final murid = muridList[index].data() as Map<String, dynamic>;
               // Tampilkan informasi murid dalam ListTile
               return Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                 child: GestureDetector(
                   onTap: () {
                     // Navigasi ke halaman baru saat data murid ditekan
@@ -57,12 +57,14 @@ class PlaygroupView extends GetView<PlaygroupController> {
                     child: ListTile(
                       title: Text(
                         murid['name'], // Tampilkan nama murid di tengah
-                        style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+                        style: const TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.w600),
                       ),
                       trailing: Transform.translate(
                         offset: const Offset(16, 0),
                         child: PopupMenuButton<String>(
-                          icon: const Icon(Icons.more_vert, color: Colors.white),
+                          icon:
+                              const Icon(Icons.more_vert, color: Colors.white),
                           itemBuilder: (context) {
                             return <PopupMenuEntry<String>>[
                               const PopupMenuItem<String>(
@@ -71,7 +73,11 @@ class PlaygroupView extends GetView<PlaygroupController> {
                               ),
                               const PopupMenuItem<String>(
                                 value: 'lihat-rapor',
-                                child: Text('Lihat Rapor'),
+                                child: Text('Rapor Semester 1'),
+                              ),
+                              const PopupMenuItem<String>(
+                                value: 'lihat-rapor2',
+                                child: Text('Rapor Semester 2'),
                               ),
                               const PopupMenuItem<String>(
                                 value: 'hapus',
@@ -83,9 +89,20 @@ class PlaygroupView extends GetView<PlaygroupController> {
                             // Tambahkan logika untuk setiap opsi di sini
                             if (value == 'kelola-rapor') {
                               // Navigasi ke halaman kelola-rapor saat 'Lihat Rapor' dipilih
-                              Get.toNamed(Routes.NILAI_A, arguments: muridList[index].id);
+                              Get.toNamed(Routes.NILAI_A,
+                                  arguments: muridList[index].id);
                             } else if (value == 'lihat-rapor') {
                               // Navigasi ke halaman rapor saat 'Ubah Data' dipilih
+                              Get.toNamed(Routes.RAPOR, arguments: {
+                                "idMurid": muridList[index].id,
+                                'semester': 'Semester 1'
+                              });
+                            } else if (value == 'lihat-rapor2') {
+                              // Navigasi ke halaman rapor saat 'Ubah Data' dipilih
+                              Get.toNamed(Routes.RAPOR, arguments: {
+                                "idMurid": muridList[index].id,
+                                'semester': 'Semester 2'
+                              });
                               Get.toNamed(Routes.RAPOR);
                             } else if (value == 'hapus') {
                               // Hapus data saat 'Hapus' dipilih
