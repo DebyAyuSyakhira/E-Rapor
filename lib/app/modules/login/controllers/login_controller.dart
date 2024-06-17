@@ -37,11 +37,17 @@ class LoginController extends GetxController {
         password: password,
       );
       if (userCredential.user!.emailVerified) {
-          customSnackBar('Success', 'User logged in successfully');
+          customSnackBar(
+            "Sukses", 
+            "Pengguna berhasil masuk"
+          );
           Get.offAllNamed(Routes.HOME);
           _registerController.clearInputText();
         } else {
-          customSnackBar('Error', 'Please verify your email');
+          customSnackBar(
+            "Error", 
+            "Mohon verifikasi email Anda"
+          );
         }
     } on FirebaseAuthException catch (error) {
       if (error.code == "user-not-found") {
@@ -62,7 +68,7 @@ class LoginController extends GetxController {
       } else if (error.code == "invalid-credential") {
         customSnackBar(
           "Gagal",
-          "Kredensial autentikasi yang diberikan salah atau telah kedaluwarsa.",
+          "Email atau Kata Sandi tidak valid. Silakan coba lagi",
         );
       } else if (error.code == "too-many-requests") {
         customSnackBar(

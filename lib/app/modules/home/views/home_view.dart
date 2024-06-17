@@ -28,7 +28,7 @@ class HomeView extends GetView<HomeController> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.fromLTRB(16.0, 32.0, 16.0, 0),
+                padding: const EdgeInsets.only(left: 25, right: 25, top: 40),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -39,71 +39,77 @@ class HomeView extends GetView<HomeController> {
                           'Welcome,',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
+                            fontSize: 22,
+                            fontWeight: FontWeight.w500,
                           ),
                         ),
                         Obx(() => Text(
                           controller.username.value,
                           style: const TextStyle(
                             color: Colors.white,
-                            fontSize: 24.0,
+                            fontSize: 22,
                             fontWeight: FontWeight.bold,
                           ),
                         )),
                       ],
                     ),
                     IconButton(
-                      icon: const Icon(
-                        Icons.exit_to_app,
-                        color: Colors.white,
-                        size: 30.0,
-                      ),
                       onPressed: () {
-                        Get.offAllNamed(Routes.LOGIN);
-                        // Handle logout button press
-                        print('Tombol Keluar ditekan');
+                        Get.defaultDialog(
+                          title: 'Pemberitahuan',
+                          middleText: 'Apakah Anda yakin ingin keluar dari Aplikasi ini?',
+                          textConfirm: 'Keluar',
+                          textCancel: 'Batal',
+                          buttonColor: const Color.fromRGBO(0, 135, 27, 1),
+                          confirmTextColor: Colors.black,
+                          onConfirm: () {
+                            controller.logout();
+                          },
+                          onCancel: () { 
+                            Get.back();
+                          },
+                        );
                       },
+                      icon: const Icon(Icons.logout_rounded, size: 25),
+                      color: Colors.white,
                     ),
                   ],
                 ),
               ),
-              const Spacer(flex: 2),
+              const Spacer(flex: 1),
               Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Center(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      ClassCard(
-                        className: 'PLAYGROUP',
-                        onPressed: () {
-                          Get.toNamed("/playgroup", arguments: controller.idPlaygroup);
-                          // Handle PLAYGROUP button press
-                          print('Tombol PLAYGROUP ditekan');
-                        }, studentCount: controller.jumlahPlaygroup,
-                      ),
-                      const SizedBox(height: 16.0),
-                      ClassCard(
-                        className: 'KELAS A',
-                        onPressed: () {
-                          Get.toNamed("/kelas-a", arguments: controller.idA);
-                          // Handle KELAS A button press
-                          print('Tombol KELAS A ditekan');
-                        }, studentCount: controller.jumlahA,
-                      ),
-                      const SizedBox(height: 16.0),
-                      ClassCard(
-                        className: 'KELAS B',
-                        onPressed: () {
-                          Get.toNamed("/kelas-b", arguments: controller.idB);
-                          // Handle KELAS B button press
-                          print('Tombol KELAS B ditekan');
-                        }, studentCount: controller.jumlahB,
-                      ),
-                    ],
-                  ),
+                padding: const EdgeInsets.only(left: 25, right: 25, top: 25),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    ClassCard(
+                      className: 'PLAYGROUP',
+                      onPressed: () {
+                        Get.toNamed(Routes.PLAYGROUP, arguments: controller.idPlaygroup);
+                        // Handle PLAYGROUP button press
+                        print('Tombol PLAYGROUP ditekan');
+                      }, studentCount: controller.jumlahPlaygroup,
+                    ),
+                    const SizedBox(height: 16.0),
+                    ClassCard(
+                      className: 'KELAS A',
+                      onPressed: () {
+                        Get.toNamed(Routes.KELAS_A, arguments: controller.idA);
+                        // Handle KELAS A button press
+                        print('Tombol KELAS A ditekan');
+                      }, studentCount: controller.jumlahA,
+                    ),
+                    const SizedBox(height: 16.0),
+                    ClassCard(
+                      className: 'KELAS B',
+                      onPressed: () {
+                        Get.toNamed(Routes.KELAS_B, arguments: controller.idB);
+                        // Handle KELAS B button press
+                        print('Tombol KELAS B ditekan');
+                      }, studentCount: controller.jumlahB,
+                    ),
+                  ],
                 ),
               ),
               const Spacer(flex: 1),
@@ -152,16 +158,14 @@ class _ClassCardState extends State<ClassCard> {
         duration: const Duration(milliseconds: 200),
         transform: Matrix4.identity()..scale(_isTapped ? 0.95 : 1.0),
         child: SizedBox(
-          width: 327,
-          height: 148.93,
+          width: double.infinity,
+          height: 145,
           child: Card(
-            color: const Color(0xFF00871B)
-                .withOpacity(0.8), // Button color set to #00871B
+            color: const Color.fromRGBO(0, 135, 27, 1).withOpacity(0.8), // Button color set to #00871B
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(20),
             ),
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
+            child: Center(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -169,16 +173,16 @@ class _ClassCardState extends State<ClassCard> {
                     widget.className,
                     style: const TextStyle(
                       color: Colors.white,
-                      fontSize: 24.0,
+                      fontSize: 24,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const SizedBox(height: 8.0),
+                  const SizedBox(height: 8),
                   Text(
                     'Jumlah Murid : ${widget.studentCount}',
                     style: const TextStyle(
                       color: Colors.white,
-                      fontSize: 18.0,
+                      fontSize: 16,
                     ),
                   ),
                 ],

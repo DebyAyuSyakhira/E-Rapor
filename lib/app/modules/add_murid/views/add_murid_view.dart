@@ -27,8 +27,8 @@ class AddMuridView extends GetView<AddMuridController> {
             children: [
               ListView(
                 padding: EdgeInsets.symmetric(
-                  horizontal: size.width * 0.07,
-                  vertical: size.height * 0.12,
+                  horizontal: size.width * 0.09,
+                  vertical: size.height * 0.10,
                 ),
                 children: [
                   const Text(
@@ -55,47 +55,49 @@ class AddMuridView extends GetView<AddMuridController> {
                       children: [
                         customTextFormField(
                           textEditingController: controller.namaMuridController,
-                          hintText: "Nama Murid",
+                          labelText: "Nama Murid",
                           keyboardType: TextInputType.name,
                         ),
                         const SizedBox(height: 30),
                         customTextFormField(
-                          textEditingController:
-                              controller.nomorIndukController,
-                          hintText: "Nomor Induk",
+                          textEditingController: controller.nomorIndukController,
+                          labelText: "Nomor Induk",
                           keyboardType: TextInputType.number,
                         ),
                         const SizedBox(height: 30),
                         customTextFormField(
                           textEditingController: controller.usiaController,
-                          hintText: "Usia",
+                          labelText: "Usia",
                           keyboardType: TextInputType.number,
                         ),
                         const SizedBox(height: 50),
-                        ElevatedButton(
-                          onPressed: () {
-                            if (_formKey.currentState!.validate()) {
-                              controller.saveDataToFirestore(idKelas);
-                            }
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor:
-                                const Color.fromRGBO(0, 135, 27, 1),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
-                              side: const BorderSide(
-                                color: Color.fromRGBO(0, 135, 27, 1),
-                                width: 2,
-                                style: BorderStyle.solid,
+                        SizedBox(
+                          height: 50,
+                          width: double.infinity,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                controller.saveDataToFirestore(idKelas);
+                              }
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor:const Color.fromRGBO(0, 135, 27, 1),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                side: const BorderSide(
+                                  color: Color.fromRGBO(0, 135, 27, 1),
+                                  width: 2,
+                                  style: BorderStyle.solid,
+                                ),
                               ),
                             ),
-                          ),
-                          child: const Text(
-                            "SIMPAN",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600,
+                            child: const Text(
+                              "SIMPAN",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600,
+                              ),
                             ),
                           ),
                         ),
@@ -109,10 +111,9 @@ class AddMuridView extends GetView<AddMuridController> {
                 left: 16,
                 child: IconButton(
                   icon: const Icon(
-                    Icons.arrow_back_ios_new,
+                    Icons.arrow_back,
                     color: Color.fromARGB(255, 0, 135, 27),
                   ),
-                  iconSize: 30,
                   onPressed: () {
                     Get.back();
                   },
@@ -127,7 +128,7 @@ class AddMuridView extends GetView<AddMuridController> {
 
   Container customTextFormField({
     required TextEditingController textEditingController,
-    required String hintText,
+    required String labelText,
     TextInputType keyboardType = TextInputType.text,
     bool isTextObscured = false,
   }) {
@@ -138,7 +139,7 @@ class AddMuridView extends GetView<AddMuridController> {
         obscureText: isTextObscured,
         validator: (value) {
           if (value == null || value.isEmpty) {
-            return "$hintText Formulir tidak boleh ada yang kosong";
+            return "$labelText Formulir tidak boleh ada yang kosong";
           }
           return null;
         },
@@ -151,8 +152,8 @@ class AddMuridView extends GetView<AddMuridController> {
           filled: true,
           fillColor: Colors.white,
           contentPadding: const EdgeInsets.only(left: 12),
-          hintText: hintText,
-          hintStyle: const TextStyle(
+          labelText: labelText,
+          labelStyle: const TextStyle(
             color: Color.fromRGBO(0, 135, 27, 1),
             fontSize: 16,
             fontWeight: FontWeight.w500,

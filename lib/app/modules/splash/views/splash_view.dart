@@ -8,14 +8,7 @@ class SplashView extends GetView<SplashController> {
   const SplashView({super.key});
   @override
   Widget build(BuildContext context) {
-   Future.delayed(const Duration(seconds: 5), (() {
-      if (FirebaseAuth.instance.currentUser != null &&
-          FirebaseAuth.instance.currentUser!.emailVerified) {
-        Get.offAllNamed(Routes.HOME);
-      } else {
-        Get.offAllNamed(Routes.LOGIN);
-      }
-    }));
+    Get.find<SplashController>().checkAuthStatus();
     return Scaffold(
       body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -12,6 +12,7 @@ class LoginView extends GetView<LoginController> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Container(
       decoration: const BoxDecoration(
           color: Colors.white,
@@ -23,36 +24,28 @@ class LoginView extends GetView<LoginController> {
         backgroundColor: Colors.transparent,
         body: SafeArea(
           child: ListView(
-            padding: const EdgeInsets.fromLTRB(30, 80, 30, 231),
+            padding: EdgeInsets.symmetric(
+              horizontal: size.width * 0.09,
+              vertical: size.height * 0.10,
+            ),
             children: [
-              const Padding(
-                padding: EdgeInsets.only(
-                  left: 5,
-                  bottom: 5,
-                ),
-                child: Text(
-                  "Masuk",
-                  style: TextStyle(
-                    color: Color.fromRGBO(0, 135, 27, 1),
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
+              const Text(
+                "Masuk",
+                style: TextStyle(
+                  color: Color.fromRGBO(0, 135, 27, 1),
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.only(
-                  left: 5,
-                  bottom: 30,
-                ),
-                child: Text(
-                  "Masuk dengan isi data berikut",
-                  style: TextStyle(
-                    color: Color(0xFF424242),
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400,
-                  ),
+              const Text(
+                "Masuk dengan isi data berikut",
+                style: TextStyle(
+                  color: Color(0xFF424242),
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
                 ),
               ),
+              const SizedBox(height: 30),
               Form(
                 key: _formKey,
                 child: Column(
@@ -168,67 +161,64 @@ class LoginView extends GetView<LoginController> {
     );
   }
 
-  Padding customTextFormField({
+  TextFormField customTextFormField({
     required TextEditingController textEditingController,
     required String hintText,
     TextInputType keyboardType = TextInputType.text,
     bool isTextObscured = false,
     Widget? suffixIcon,
   }) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
-      child: TextFormField(
-        controller: textEditingController,
-        keyboardType: keyboardType,
-        obscureText: isTextObscured,
-        validator: (value) {
-          if (value == null || value.isEmpty) {
-            return "$hintText tidak boleh kosong";
-          }
-          return null;
-        },
-        style: const TextStyle(
+    return TextFormField(
+      controller: textEditingController,
+      keyboardType: keyboardType,
+      obscureText: isTextObscured,
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return "$hintText tidak boleh kosong";
+        }
+        return null;
+      },
+      style: const TextStyle(
+        color: Color.fromRGBO(0, 135, 27, 1),
+        fontSize: 16,
+        fontWeight: FontWeight.w500,
+      ),
+      decoration: InputDecoration(
+        filled: true,
+        fillColor: Colors.white,
+        contentPadding: const EdgeInsets.only(left: 12),
+        hintText: hintText,
+        hintStyle: const TextStyle(
           color: Color.fromRGBO(0, 135, 27, 1),
           fontSize: 16,
           fontWeight: FontWeight.w500,
         ),
-        decoration: InputDecoration(
-          filled: true,
-          fillColor: Colors.white,
-          contentPadding: const EdgeInsets.only(left: 12),
-          hintText: hintText,
-          hintStyle: const TextStyle(
+        suffixIcon: suffixIcon,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(5),
+          borderSide: const BorderSide(
             color: Color.fromRGBO(0, 135, 27, 1),
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
+            width: 2,
+            style: BorderStyle.solid,
+            strokeAlign: BorderSide.strokeAlignInside,
           ),
-          suffixIcon: suffixIcon,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(5),
-            borderSide: const BorderSide(
-              color: Color.fromRGBO(0, 135, 27, 1),
-              width: 2,
-              style: BorderStyle.solid,
-              strokeAlign: BorderSide.strokeAlignInside,
-            ),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(5),
+          borderSide: const BorderSide(
+            color: Color.fromRGBO(0, 135, 27, 1),
+            width: 2,
+            style: BorderStyle.solid,
+            strokeAlign: BorderSide.strokeAlignInside,
           ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(5),
-            borderSide: const BorderSide(
-              color: Color.fromRGBO(0, 135, 27, 1),
-              width: 2,
-              style: BorderStyle.solid,
-              strokeAlign: BorderSide.strokeAlignInside,
-            ),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(5),
-            borderSide: const BorderSide(
-              color: Color.fromRGBO(0, 135, 27, 1),
-              width: 2,
-              style: BorderStyle.solid,
-              strokeAlign: BorderSide.strokeAlignInside,
-            ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(5),
+          borderSide: const BorderSide(
+            color: Color.fromRGBO(0, 135, 27, 1),
+            width: 2,
+            style: BorderStyle.solid,
+            strokeAlign: BorderSide.strokeAlignInside,
           ),
         ),
       ),

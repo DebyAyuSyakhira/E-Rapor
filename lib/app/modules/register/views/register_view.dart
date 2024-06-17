@@ -11,6 +11,7 @@ class RegisterView extends GetView<RegisterController> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Container(
       decoration: const BoxDecoration(
           color: Colors.white,
@@ -22,36 +23,28 @@ class RegisterView extends GetView<RegisterController> {
         backgroundColor: Colors.transparent,
         body: SafeArea(
           child: ListView(
-            padding: const EdgeInsets.fromLTRB(30, 80, 30, 160),
+            padding: EdgeInsets.symmetric(
+              horizontal: size.width * 0.09,
+              vertical: size.height * 0.10,
+            ),
             children: [
-              const Padding(
-                padding: EdgeInsets.only(
-                  left: 5,
-                  bottom: 5,
-                ),
-                child: Text(
-                  "Daftar",
-                  style: TextStyle(
-                    color: Color.fromRGBO(0, 135, 27, 1),
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
+              const Text(
+                "Daftar",
+                style: TextStyle(
+                  color: Color.fromRGBO(0, 135, 27, 1),
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.only(
-                  left: 5,
-                  bottom: 30,
-                ),
-                child: Text(
-                  "Daftar dengan isi data berikut",
-                  style: TextStyle(
-                    color: Color(0xFF424242),
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400,
-                  ),
+              const Text(
+                "Daftar dengan isi data berikut",
+                style: TextStyle(
+                  color: Color(0xFF424242),
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
                 ),
               ),
+              const SizedBox(height: 30),
               Form(
                 key: _formKey,
                 child: Column(
@@ -169,7 +162,7 @@ class RegisterView extends GetView<RegisterController> {
     );
   }
 
-  Padding customTextFormField({
+  TextFormField customTextFormField({
     required TextEditingController textEditingController,
     required String hintText,
     TextInputType keyboardType = TextInputType.text,
@@ -177,61 +170,58 @@ class RegisterView extends GetView<RegisterController> {
     List<TextInputFormatter>? inputFormatters,
     Widget? suffixIcon,
   }) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
-      child: TextFormField(
-        controller: textEditingController,
-        keyboardType: keyboardType,
-        obscureText: isTextObscured,
-        inputFormatters: inputFormatters,
-        validator: (value) {
-          if (value == null || value.isEmpty) {
-            return "$hintText tidak boleh kosong";
-          }
-          return null;
-        },
-        style: const TextStyle(
+    return TextFormField(
+      controller: textEditingController,
+      keyboardType: keyboardType,
+      obscureText: isTextObscured,
+      inputFormatters: inputFormatters,
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return "$hintText tidak boleh kosong";
+        }
+        return null;
+      },
+      style: const TextStyle(
+        color: Color.fromRGBO(0, 135, 27, 1),
+        fontSize: 16,
+        fontWeight: FontWeight.w500,
+      ),
+      decoration: InputDecoration(
+        filled: true,
+        fillColor: Colors.white,
+        contentPadding: const EdgeInsets.only(left: 12),
+        hintText: hintText,
+        hintStyle: const TextStyle(
           color: Color.fromRGBO(0, 135, 27, 1),
           fontSize: 16,
           fontWeight: FontWeight.w500,
         ),
-        decoration: InputDecoration(
-          filled: true,
-          fillColor: Colors.white,
-          contentPadding: const EdgeInsets.only(left: 12),
-          hintText: hintText,
-          hintStyle: const TextStyle(
+        suffixIcon: suffixIcon,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(5),
+          borderSide: const BorderSide(
             color: Color.fromRGBO(0, 135, 27, 1),
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
+            width: 2,
+            style: BorderStyle.solid,
+            strokeAlign: BorderSide.strokeAlignInside,
           ),
-          suffixIcon: suffixIcon,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(5),
-            borderSide: const BorderSide(
-              color: Color.fromRGBO(0, 135, 27, 1),
-              width: 2,
-              style: BorderStyle.solid,
-              strokeAlign: BorderSide.strokeAlignInside,
-            ),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(5),
+          borderSide: const BorderSide(
+            color: Color.fromRGBO(0, 135, 27, 1),
+            width: 2,
+            style: BorderStyle.solid,
+            strokeAlign: BorderSide.strokeAlignInside,
           ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(5),
-            borderSide: const BorderSide(
-              color: Color.fromRGBO(0, 135, 27, 1),
-              width: 2,
-              style: BorderStyle.solid,
-              strokeAlign: BorderSide.strokeAlignInside,
-            ),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(5),
-            borderSide: const BorderSide(
-              color: Color.fromRGBO(0, 135, 27, 1),
-              width: 2,
-              style: BorderStyle.solid,
-              strokeAlign: BorderSide.strokeAlignInside,
-            ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(5),
+          borderSide: const BorderSide(
+            color: Color.fromRGBO(0, 135, 27, 1),
+            width: 2,
+            style: BorderStyle.solid,
+            strokeAlign: BorderSide.strokeAlignInside,
           ),
         ),
       ),

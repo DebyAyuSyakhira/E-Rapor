@@ -16,15 +16,12 @@ class RaporView extends GetView<RaporController> {
         title: const Text(
           'Rapor',
           style: TextStyle(
-              color: Colors.white, fontSize: 26, fontWeight: FontWeight.bold),
+              color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
         ),
-        leading: IconButton(
-            onPressed: () {
-              // To Do : Ubah menuju ke tampilan Home kelas masing - masing
-              Get.back();
-            },
-            icon: const Icon(Icons.arrow_back)),
         centerTitle: true,
+        iconTheme: const IconThemeData(
+          color: Colors.white, 
+        ),
       ),
       body: FutureBuilder(
         future: controller.fetchMuridDanRapor(),
@@ -32,20 +29,17 @@ class RaporView extends GetView<RaporController> {
           return ListView(
             children: [
               const SizedBox(
-                height: 20,
+                height: 16,
               ),
               const Center(
                 child: Text(
-                  'LAPORAN PERKEMBANGAN ANAK',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  'LAPORAN PERKEMBANGAN\nANAK',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
               ),
-              Container(
-                // color: Colors.red,
-                // width: double.infinity,
-                margin: const EdgeInsets.only(
-                  left: 10,
-                ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: DataTable(
@@ -148,170 +142,164 @@ class RaporView extends GetView<RaporController> {
                 height: 15,
               ),
               Container(
-                  alignment: Alignment.topLeft,
-                  margin: const EdgeInsets.symmetric(horizontal: 10),
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black, width: 2),
-                      borderRadius: BorderRadius.circular(5)),
+                margin: const EdgeInsets.symmetric(horizontal: 16),
+                decoration: BoxDecoration(
+                    border: Border.all(color: Colors.black, width: 2),
+                    borderRadius: BorderRadius.circular(5)),
+                child: Padding(
+                  padding: const EdgeInsets.all(8),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
-                          padding: const EdgeInsets.only(left: 5),
-                          child: const Text(
-                            "Perkembangan Nilai Agama dan Moral",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 16),
-                          )),
-                      Container(
-                        padding: const EdgeInsets.only(left: 5),
-                        child: Text(
-                          "${controller.dataRapor["religious_and_moral_values_development"]}",
-                          style: const TextStyle(fontSize: 15, height: 1.5),
-                          maxLines: 10,
-                        ),
+                      const Text(
+                        "Perkembangan Nilai Agama dan Moral",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 16),
+                      ),
+                      Text(
+                        "${controller.dataRapor["religious_and_moral_values_development"]}",
+                        style: const TextStyle(fontSize: 15, height: 1.5),
+                        maxLines: 10,
                       ),
                     ],
-                  )),
+                  ),
+                )
+              ),
               const SizedBox(
                 height: 20,
               ),
               Container(
-                  alignment: Alignment.topLeft,
-                  margin: const EdgeInsets.symmetric(horizontal: 10),
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black, width: 2),
-                      borderRadius: BorderRadius.circular(5)),
+                margin: const EdgeInsets.symmetric(horizontal: 16),
+                decoration: BoxDecoration(
+                    border: Border.all(color: Colors.black, width: 2),
+                    borderRadius: BorderRadius.circular(5)),
+                child: Padding(
+                  padding: const EdgeInsets.all(8),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
-                          padding: const EdgeInsets.only(left: 5),
-                          child: const Text(
-                            "Perkembangan Motorik",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 16),
-                          )),
-                      Container(
-                        padding: const EdgeInsets.only(left: 5),
-                        child: Text(
-                          "${controller.dataRapor["physical_development"]}",
-                          style: const TextStyle(fontSize: 15, height: 1.5),
-                          maxLines: 10,
-                        ),
+                      const Text(
+                        "Perkembangan Motorik",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 16),
+                      ),
+                      Text(
+                        "${controller.dataRapor["physical_development"]}",
+                        style: const TextStyle(fontSize: 15, height: 1.5),
+                        maxLines: 10,
                       ),
                     ],
-                  )),
+                  ),
+                )
+              ),
               const SizedBox(
                 height: 20,
               ),
               Container(
-                  alignment: Alignment.topLeft,
-                  margin: const EdgeInsets.symmetric(horizontal: 10),
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black, width: 2),
-                      borderRadius: BorderRadius.circular(5)),
+                margin: const EdgeInsets.symmetric(horizontal: 16),
+                decoration: BoxDecoration(
+                    border: Border.all(color: Colors.black, width: 2),
+                    borderRadius: BorderRadius.circular(5)),
+                child: Padding(
+                  padding: const EdgeInsets.all(8),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
-                          padding: const EdgeInsets.only(left: 5),
-                          child: const Text(
-                            "Perkembangan Kognitif",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 16),
-                          )),
-                      Container(
-                        padding: const EdgeInsets.only(left: 5),
-                        child: Text(
-                          "${controller.dataRapor["cognitive_development"]}",
-                          style: const TextStyle(fontSize: 15, height: 1.5),
-                          maxLines: 10,
-                        ),
+                      const Text(
+                        "Perkembangan Kognitif",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 16),
+                      ),
+                      Text(
+                        "${controller.dataRapor["cognitive_development"]}",
+                        style: const TextStyle(fontSize: 15, height: 1.5),
+                        maxLines: 10,
                       ),
                     ],
-                  )),
+                  ),
+                )
+              ),
               const SizedBox(
                 height: 20,
               ),
               Container(
-                  alignment: Alignment.topLeft,
-                  margin: const EdgeInsets.symmetric(horizontal: 10),
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black, width: 2),
-                      borderRadius: BorderRadius.circular(5)),
+                margin: const EdgeInsets.symmetric(horizontal: 16),
+                decoration: BoxDecoration(
+                    border: Border.all(color: Colors.black, width: 2),
+                    borderRadius: BorderRadius.circular(5)),
+                child: Padding(
+                  padding: const EdgeInsets.all(8),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
-                          padding: const EdgeInsets.only(left: 5),
-                          child: const Text(
-                            "Perkembangan Sosial Emosional",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 16),
-                          )),
-                      Container(
-                        padding: const EdgeInsets.only(left: 5),
-                        child: Text(
-                          "${controller.dataRapor["social_emotional_development"]}",
-                          style: const TextStyle(fontSize: 15, height: 1.5),
-                          maxLines: 10,
-                        ),
+                      const Text(
+                        "Perkembangan Sosial Emosional",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 16),
+                      ),
+                      Text(
+                        "${controller.dataRapor["social_emotional_development"]}",
+                        style: const TextStyle(fontSize: 15, height: 1.5),
+                        maxLines: 10,
                       ),
                     ],
-                  )),
+                  ),
+                )
+              ),
               const SizedBox(
                 height: 20,
               ),
               Container(
-                  alignment: Alignment.topLeft,
-                  margin: const EdgeInsets.symmetric(horizontal: 10),
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black, width: 2),
-                      borderRadius: BorderRadius.circular(5)),
+                margin: const EdgeInsets.symmetric(horizontal: 16),
+                decoration: BoxDecoration(
+                    border: Border.all(color: Colors.black, width: 2),
+                    borderRadius: BorderRadius.circular(5)),
+                child: Padding(
+                  padding: const EdgeInsets.all(8),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
-                          padding: const EdgeInsets.only(left: 5),
-                          child: const Text(
-                            "Perkembangan Bahasa",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 16),
-                          )),
-                      Container(
-                        padding: const EdgeInsets.only(left: 5),
-                        child: Text(
-                          "${controller.dataRapor["language_development"]}",
-                          style: const TextStyle(fontSize: 15, height: 1.5),
-                          maxLines: 10,
-                        ),
+                      const Text(
+                        "Perkembangan Bahasa",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 16),
+                      ),
+                      Text(
+                        "${controller.dataRapor["language_development"]}",
+                        style: const TextStyle(fontSize: 15, height: 1.5),
+                        maxLines: 10,
                       ),
                     ],
-                  )),
+                  ),
+                )
+              ),
               const SizedBox(
                 height: 20,
               ),
               Container(
-                  alignment: Alignment.topLeft,
-                  margin: const EdgeInsets.symmetric(horizontal: 10),
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black, width: 2),
-                      borderRadius: BorderRadius.circular(5)),
+                margin: const EdgeInsets.symmetric(horizontal: 16),
+                decoration: BoxDecoration(
+                    border: Border.all(color: Colors.black, width: 2),
+                    borderRadius: BorderRadius.circular(5)),
+                child: Padding(
+                  padding: const EdgeInsets.all(8),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
-                          padding: const EdgeInsets.only(left: 5),
-                          child: const Text(
-                            "Perkembangan Seni",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 16),
-                          )),
-                      Container(
-                        padding: const EdgeInsets.only(left: 5),
-                        child: Text(
-                          "${controller.dataRapor["artistic_development"]}",
-                          style: const TextStyle(fontSize: 15, height: 1.5),
-                          maxLines: 10,
-                        ),
+                      const Text(
+                        "Perkembangan Seni",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 16),
+                      ),
+                      Text(
+                        "${controller.dataRapor["artistic_development"]}",
+                        style: const TextStyle(fontSize: 15, height: 1.5),
+                        maxLines: 10,
                       ),
                     ],
-                  )),
+                  ),
+                )
+              ),
               const SizedBox(
                 height: 15,
               )

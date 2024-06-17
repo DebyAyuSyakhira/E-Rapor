@@ -60,8 +60,8 @@ class RegisterController extends GetxController {
       // );
       userCredential.user!.sendEmailVerification();
         Get.defaultDialog(
-          title: 'Verify your email',
-          middleText:'Please verify your email to continue. We have sent you an email verification link.',
+          title: 'Verifikasi email Anda',
+          middleText:'Kami telah mengirimkan tautan verifikasi email kepada Anda.',
           textConfirm: 'OK',
           textCancel: 'Resend',
           buttonColor: const Color.fromRGBO(0, 135, 27, 1),
@@ -72,7 +72,7 @@ class RegisterController extends GetxController {
           },
           onCancel: () {
             userCredential.user!.sendEmailVerification();
-            customSnackBar('Success', 'Email verification link sent');
+            customSnackBar('Sukses', 'Tautan verifikasi email terkirim');
           },
         );
     } on FirebaseAuthException catch (error) {

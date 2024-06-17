@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../routes/app_pages.dart';
+
 class HomeController extends GetxController {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   int jumlahPlaygroup = 0;
   int jumlahA = 0;
@@ -69,4 +71,10 @@ class HomeController extends GetxController {
       print('Error fetching user name: $error');
     }
   }
+
+   void logout() async {
+    await _auth.signOut();
+    Get.offAllNamed(Routes.LOGIN);
+  }
+
 }
