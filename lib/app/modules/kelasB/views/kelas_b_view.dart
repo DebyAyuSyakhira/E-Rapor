@@ -18,6 +18,14 @@ class KelasBView extends GetView<KelasBController> {
         titleTextStyle: const TextStyle(
             color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
         backgroundColor: const Color.fromRGBO(0, 135, 27, 1),
+        leading: IconButton(
+          onPressed: () {
+            Get.toNamed(Routes.HOME);
+          },
+          icon: Icon(
+            Icons.arrow_back,
+          ),
+        ),
         iconTheme: const IconThemeData(
           color: Colors.white,
         ),

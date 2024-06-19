@@ -18,6 +18,7 @@ abstract class Routes {
   static const NILAI_PLAYGROUP = _Paths.NILAI_PLAYGROUP;
   static const NILAI_A = _Paths.NILAI_A;
   static const NILAI_B = _Paths.NILAI_B;
+  static const EDIT_RAPOR = _Paths.EDIT_RAPOR;
 }
 
 abstract class _Paths {
@@ -37,4 +38,5 @@ abstract class _Paths {
   static const NILAI_PLAYGROUP = '/nilai-playgroup';
   static const NILAI_A = '/nilai-a';
   static const NILAI_B = '/nilai-b';
+  static const EDIT_RAPOR = '/edit-rapor';
 }

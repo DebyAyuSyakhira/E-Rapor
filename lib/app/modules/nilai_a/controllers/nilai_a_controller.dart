@@ -61,21 +61,50 @@ class NilaiAController extends GetxController {
       String sakit,
       String tanpaKeterangan) async {
     try {
-      await firestore.collection('student_report').add({
-        'student_id': idMurid,
-        'semester': selectedSemester.value, // Add selected semester
-        'religious_and_moral_values_development': agama,
-        'physical_development': motorik,
-        'cognitive_development': kognitif,
-        'social_emotional_development': sosial,
-        'language_development': bahasa,
-        'artistic_development': seni,
-        'body_weight': beratBadan,
-        'body_height': tinggiBadan,
-        'number_of_permit_days': izin,
-        'number_of_sick_days': sakit,
-        'number_of_days_without_information': tanpaKeterangan
-      });
+      final QuerySnapshot querySnapshot = await _firestore
+          .collection('student_report')
+          .where('student_id', isEqualTo: idMurid)
+          .where('semester', isEqualTo: selectedSemester.value)
+          .get();
+      print(querySnapshot);
+
+      final bool isexists = querySnapshot.docs.isNotEmpty;
+      print(isexists);
+      if (isexists) {
+        final String idrapor = querySnapshot.docs.first.id;
+        await firestore.collection('student_report').doc(idrapor).update({
+          'student_id': idMurid,
+          'semester': selectedSemester.value, // Add selected semester
+          'religious_and_moral_values_development': agama,
+          'physical_development': motorik,
+          'cognitive_development': kognitif,
+          'social_emotional_development': sosial,
+          'language_development': bahasa,
+          'artistic_development': seni,
+          'body_weight': beratBadan,
+          'body_height': tinggiBadan,
+          'number_of_permit_days': izin,
+          'number_of_sick_days': sakit,
+          'number_of_days_without_information': tanpaKeterangan
+        });
+      } else {
+        await firestore.collection('student_report').add({
+          'student_id': idMurid,
+          'semester': selectedSemester.value, // Add selected semester
+          'religious_and_moral_values_development': agama,
+          'physical_development': motorik,
+          'cognitive_development': kognitif,
+          'social_emotional_development': sosial,
+          'language_development': bahasa,
+          'artistic_development': seni,
+          'body_weight': beratBadan,
+          'body_height': tinggiBadan,
+          'number_of_permit_days': izin,
+          'number_of_sick_days': sakit,
+          'number_of_days_without_information': tanpaKeterangan
+        });
+      }
+
       Get.back();
       Get.snackbar('Success', 'Data added successfully');
 

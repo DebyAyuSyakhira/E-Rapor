@@ -94,6 +94,6 @@ class AppPages {
       name: _Paths.NILAI_A,
       page: () => NilaiAView(),
       binding: NilaiABinding(),
-    )
+    ),
   ];
 }

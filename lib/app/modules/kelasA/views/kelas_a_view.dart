@@ -19,6 +19,17 @@ class KelasAView extends GetView<KelasAController> {
           color: Colors.white,
           fontSize: 19,
         ),
+        leading: IconButton(
+          onPressed: () {
+            Get.toNamed(Routes.HOME);
+          },
+          icon: Icon(
+            Icons.arrow_back,
+          ),
+        ),
+        iconTheme: const IconThemeData(
+          color: Colors.white,
+        ),
         backgroundColor: const Color(0xFF00871B), // Warna latar belakang AppBar
       ),
       body: Obx(() {
@@ -77,7 +88,11 @@ class KelasAView extends GetView<KelasAController> {
                               ),
                               const PopupMenuItem<String>(
                                 value: 'hapus',
-                                child: Text('Hapus'),
+                                child: Text('Hapus Murid'),
+                              ),
+                              const PopupMenuItem<String>(
+                                value: 'hapus rapor',
+                                child: Text('Hapus Data Rapor'),
                               ),
                             ];
                           },
