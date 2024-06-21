@@ -12,7 +12,25 @@ class RaporController extends GetxController {
   Future<void> fetchMuridDanRapor() async {
     QuerySnapshot docrapor =
         await _firestore.collection('student_report').where('student_id', isEqualTo: infoMurid['idMurid']).where('semester', isEqualTo: infoMurid['semester']).get();
-    dataRapor = docrapor.docs.first.data() as Map<String, dynamic>;
+    // dataRapor = docrapor.docs.first.data() as Map<String, dynamic>;
+    if (docrapor.docs.isNotEmpty) {
+        dataRapor = docrapor.docs.first.data() as Map<String, dynamic>;
+      } else {
+        dataRapor = {
+          'semester': infoMurid['semester'] ?? '-',
+          'religious_and_moral_values_development': '-',
+          'physical_development': '-',
+          'cognitive_development': '-',
+          'social_emotional_development': '-',
+          'language_development': '-',
+          'artistic_development': '-',
+          'body_weight': '-',
+          'body_height': '-',
+          'number_of_permit_days': '-',
+          'number_of_sick_days': '-',
+          'number_of_days_without_information': '-',
+        };
+      }
 
     DocumentSnapshot docmurid =
         await _firestore.collection('student').doc(infoMurid['idMurid']).get();

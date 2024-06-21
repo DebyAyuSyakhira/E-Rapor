@@ -1,8 +1,6 @@
-import 'dart:ffi';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_rapor/app/modules/nilai_a/controllers/nilai_a_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:get/get.dart';
 
@@ -51,7 +49,7 @@ class NilaiAView extends GetView<NilaiAController> {
                             alignment: Alignment.topLeft,
                             child: Text(
                               "nama: ${controller.data['name']}",
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 16,
                               ),
                             ),
@@ -63,7 +61,7 @@ class NilaiAView extends GetView<NilaiAController> {
                             alignment: Alignment.topLeft,
                             child: Text(
                               "Nomor Induk : ${controller.data['id_number']}",
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 16,
                               ),
                             ),
@@ -75,7 +73,7 @@ class NilaiAView extends GetView<NilaiAController> {
                             alignment: Alignment.topLeft,
                             child: Text(
                               "Usia : ${controller.data['age']}",
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 16,
                               ),
                             ),
@@ -128,6 +126,7 @@ class NilaiAView extends GetView<NilaiAController> {
                                     : controller.selectedSemester.value,
                                 onChanged: (String? value) {
                                   controller.selectedSemester.value = value!;
+                                  controller.fetchMurid();
                                 },
                               )),
                           const SizedBox(
@@ -386,6 +385,10 @@ class NilaiAView extends GetView<NilaiAController> {
                               ),
                               TextFormField(
                                 controller: controller.tinggiBadanController,
+                                keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                                  inputFormatters: [
+                                    FilteringTextInputFormatter.allow(RegExp(r'[\d,]')),
+                                  ],
                                 decoration: const InputDecoration(
                                     hintText: "Tinggi Badan",
                                     hintStyle: TextStyle(
@@ -421,6 +424,10 @@ class NilaiAView extends GetView<NilaiAController> {
                               ),
                               TextFormField(
                                 controller: controller.beratBadanController,
+                                keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                                  inputFormatters: [
+                                    FilteringTextInputFormatter.allow(RegExp(r'[\d,]')),
+                                  ],
                                 decoration: const InputDecoration(
                                     hintText: "Berat Badan",
                                     hintStyle: TextStyle(
@@ -467,6 +474,8 @@ class NilaiAView extends GetView<NilaiAController> {
                               ),
                               TextFormField(
                                 controller: controller.izinController,
+                                keyboardType: TextInputType.number,
+                                inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                                 decoration: const InputDecoration(
                                     hintText: "Izin",
                                     hintStyle: TextStyle(
@@ -502,6 +511,8 @@ class NilaiAView extends GetView<NilaiAController> {
                               ),
                               TextFormField(
                                 controller: controller.sakitController,
+                                keyboardType: TextInputType.number,
+                                inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                                 decoration: const InputDecoration(
                                     hintText: "Sakit",
                                     hintStyle: TextStyle(
@@ -537,6 +548,8 @@ class NilaiAView extends GetView<NilaiAController> {
                               ),
                               TextFormField(
                                 controller: controller.tanpaKeteranganController,
+                                keyboardType: TextInputType.number,
+                                inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                                 decoration: const InputDecoration(
                                     hintText: "Tanpa Keterangan",
                                     hintStyle: TextStyle(

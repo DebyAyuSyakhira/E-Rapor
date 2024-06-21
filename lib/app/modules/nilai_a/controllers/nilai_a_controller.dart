@@ -31,6 +31,29 @@ class NilaiAController extends GetxController {
     print(data["name"]);
     print(data["id_number"]);
     print(data["age"]);
+
+    if (selectedSemester.value.isNotEmpty) {
+      final raporDoc = (await _firestore
+        .collection('student_report')
+        .where('student_id', isEqualTo: idMurid) 
+        .where('semester', isEqualTo: selectedSemester.value)
+        .get())
+        .docs
+        .firstOrNull; //ngambil doc pertama dari hasil query, klo null berarti ga cocok sma kriteria.
+
+      agamaController.text = raporDoc?['religious_and_moral_values_development'] ?? '';
+      motorikController.text = raporDoc?['physical_development'] ?? '';
+      kognitifController.text = raporDoc?['cognitive_development'] ?? '';
+      sosialController.text = raporDoc?['social_emotional_development'] ?? '';
+      bahasaController.text = raporDoc?['language_development'] ?? '';
+      seniController.text = raporDoc?['artistic_development'] ?? '';
+      beratBadanController.text = raporDoc?['body_weight'] ?? '';
+      tinggiBadanController.text = raporDoc?['body_height'] ?? '';
+      izinController.text = raporDoc?['number_of_permit_days'] ?? '';
+      sakitController.text = raporDoc?['number_of_sick_days'] ?? '';
+      tanpaKeteranganController.text = raporDoc?['number_of_days_without_information'] ?? '';
+    }
+    
   }
 
   var selectedSemester = ''.obs; // Observable variable for selected semester

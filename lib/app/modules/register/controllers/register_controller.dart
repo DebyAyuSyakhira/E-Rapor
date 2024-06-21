@@ -59,22 +59,23 @@ class RegisterController extends GetxController {
       //   "Akun Anda berhasil dibuat.",
       // );
       userCredential.user!.sendEmailVerification();
-        Get.defaultDialog(
-          title: 'Verifikasi email Anda',
-          middleText:'Kami telah mengirimkan tautan verifikasi email kepada Anda.',
-          textConfirm: 'OK',
-          textCancel: 'Resend',
-          buttonColor: const Color.fromRGBO(0, 135, 27, 1),
-          confirmTextColor: Colors.black,
-          onConfirm: () {
-            Get.offAllNamed(Routes.LOGIN);
-            clearInputText();
-          },
-          onCancel: () {
-            userCredential.user!.sendEmailVerification();
-            customSnackBar('Sukses', 'Tautan verifikasi email terkirim');
-          },
-        );
+      Get.defaultDialog(
+        title: 'Verifikasi email Anda',
+        middleText:'Kami telah mengirimkan tautan verifikasi email kepada Anda.',
+        textConfirm: 'OK',
+        textCancel: 'Resend',
+        buttonColor: Colors.transparent,
+        confirmTextColor: const Color.fromRGBO(0, 135, 27, 1),
+        cancelTextColor: const Color.fromRGBO(0, 135, 27, 1),
+        onConfirm: () {
+          Get.offAllNamed(Routes.LOGIN);
+          clearInputText();
+        },
+        onCancel: () {
+          userCredential.user!.sendEmailVerification();
+          customSnackBar('Sukses', 'Tautan verifikasi email terkirim');
+        },
+      );
     } on FirebaseAuthException catch (error) {
       if (error.code == "weak-password") {
         customSnackBar(

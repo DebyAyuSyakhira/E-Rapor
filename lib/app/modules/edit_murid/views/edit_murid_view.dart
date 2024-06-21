@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import '../controllers/edit_murid_controller.dart';
@@ -62,12 +63,14 @@ class EditMuridView extends GetView<EditMuridController> {
                           textEditingController: controller.nomorIndukController,
                           labelText: "Nomor Induk",
                           keyboardType: TextInputType.number,
+                          inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                         ),
                         const SizedBox(height: 30),
                         customTextFormField(
                           textEditingController: controller.usiaController,
                           labelText: "Usia",
                           keyboardType: TextInputType.number,
+                          inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                         ),
                         const SizedBox(height: 50),
                         Row(
@@ -169,12 +172,14 @@ class EditMuridView extends GetView<EditMuridController> {
     required String labelText,
     TextInputType keyboardType = TextInputType.text,
     bool isTextObscured = false,
+    List<TextInputFormatter>? inputFormatters,
   }) {
     return Container(
       child: TextFormField(
         controller: textEditingController,
         keyboardType: keyboardType,
         obscureText: isTextObscured,
+        inputFormatters: inputFormatters,
         validator: (value) {
           if (value == null || value.isEmpty) {
             return "$labelText Formulir tidak boleh ada yang kosong";

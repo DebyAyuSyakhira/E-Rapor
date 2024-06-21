@@ -70,8 +70,9 @@ class HomeView extends GetView<HomeController> {
                                   'Apakah Anda yakin ingin keluar dari Aplikasi ini?',
                               textConfirm: 'Keluar',
                               textCancel: 'Batal',
-                              buttonColor: const Color.fromRGBO(0, 135, 27, 1),
-                              confirmTextColor: Colors.black,
+                              buttonColor: Colors.transparent,
+                              confirmTextColor: const Color.fromRGBO(0, 135, 27, 1),
+                              cancelTextColor: const Color.fromRGBO(0, 135, 27, 1),
                               onConfirm: () {
                                 controller.logout();
                               },

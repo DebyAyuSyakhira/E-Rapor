@@ -127,7 +127,7 @@ class PlaygroupView extends GetView<PlaygroupController> {
                                           // Batalkan penghapusan
                                           Navigator.of(context).pop();
                                         },
-                                        child: const Text('Batal'),
+                                        child: const Text('Batal', style: TextStyle(color:Color.fromRGBO(0, 135, 27, 1),)),
                                       ),
                                       TextButton(
                                         onPressed: () async {
@@ -142,7 +142,7 @@ class PlaygroupView extends GetView<PlaygroupController> {
                                               .delete();
                                           Navigator.of(context).pop();
                                         },
-                                        child: const Text('Hapus'),
+                                        child: const Text('Hapus', style: TextStyle(color:Color.fromRGBO(0, 135, 27, 1),)),
                                       ),
                                     ],
                                   );
