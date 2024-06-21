@@ -57,17 +57,7 @@ class AddMuridController extends GetxController {
         "id_number": nomorIndukController.text,
         "age": usiaController.text,
       });
-      final DocumentSnapshot documentSnapshot = await _firestore
-          .collection('student_class')
-          .doc(studentClassId)
-          .get();
-
-      final Map data = documentSnapshot.data() as Map;
-      int jumlahMurid = data["student_count"];
-
-      await _firestore.collection("student_class").doc(studentClassId).update({
-        "student_count": jumlahMurid + 1,
-      });
+      
       namaMuridController.clear();
       nomorIndukController.clear();
       usiaController.clear();

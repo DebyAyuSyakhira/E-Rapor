@@ -39,7 +39,11 @@ class HomeController extends GetxController {
           .get();
       idPlaygroup = querySnapshot.docs.first.id;
       final Map data = querySnapshot.docs.first.data() as Map;
-      jumlahPlaygroup = data["student_count"];
+      final QuerySnapshot jumlahsnapshot = await _firestore
+          .collection('student')
+          .where("student_class_id", isEqualTo: idPlaygroup)
+          .get();
+          jumlahPlaygroup = jumlahsnapshot.docs.length;
       print(jumlahPlaygroup);
     } catch (error) {
       print('Error fetching murid for class A: $error');
@@ -54,7 +58,11 @@ class HomeController extends GetxController {
           .get();
       idA = querySnapshot.docs.first.id;
       final Map data = querySnapshot.docs.first.data() as Map;
-      jumlahA = data["student_count"];
+      final QuerySnapshot jumlahsnapshot = await _firestore
+          .collection('student')
+          .where("student_class_id", isEqualTo: idA)
+          .get();
+          jumlahA = jumlahsnapshot.docs.length;
     } catch (error) {
       print('Error fetching murid for class A: $error');
     }
@@ -68,7 +76,11 @@ class HomeController extends GetxController {
           .get();
       idB = querySnapshot.docs.first.id;
       final Map data = querySnapshot.docs.first.data() as Map;
-      jumlahB = data["student_count"];
+      final QuerySnapshot jumlahsnapshot = await _firestore
+          .collection('student')
+          .where("student_class_id", isEqualTo: idB)
+          .get();
+          jumlahB = jumlahsnapshot.docs.length;
     } catch (error) {
       print('Error fetching murid for class A: $error');
     }
