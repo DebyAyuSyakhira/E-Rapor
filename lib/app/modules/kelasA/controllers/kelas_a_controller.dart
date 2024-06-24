@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class KelasAController extends GetxController {
-  // RxList untuk menyimpan daftar murid kelas B
+  // RxList untuk menyimpan daftar murid kelas A
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   RxList<DocumentSnapshot> murid_a = <DocumentSnapshot>[].obs;
   String idKelasA = Get.arguments;
@@ -10,11 +10,10 @@ class KelasAController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    // Panggil fungsi untuk mengambil data murid kelas B dari Firestore saat kontroller diinisialisasi
     fetchData();
   }
 
-  // Fungsi untuk mengambil data murid kelas B dari Firestore
+  // Fungsi untuk mengambil data murid kelas A dari Firestore
   void fetchData() async {
     try {
       _firestore

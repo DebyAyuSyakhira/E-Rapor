@@ -56,7 +56,7 @@ class NilaiAController extends GetxController {
     
   }
 
-  var selectedSemester = ''.obs; // Observable variable for selected semester
+  var selectedSemester = ''.obs; 
   late TextEditingController agamaController = TextEditingController();
   late TextEditingController motorikController = TextEditingController();
   late TextEditingController kognitifController = TextEditingController();
@@ -97,7 +97,7 @@ class NilaiAController extends GetxController {
         final String idrapor = querySnapshot.docs.first.id;
         await firestore.collection('student_report').doc(idrapor).update({
           'student_id': idMurid,
-          'semester': selectedSemester.value, // Add selected semester
+          'semester': selectedSemester.value,
           'religious_and_moral_values_development': agama,
           'physical_development': motorik,
           'cognitive_development': kognitif,
@@ -113,7 +113,7 @@ class NilaiAController extends GetxController {
       } else {
         await firestore.collection('student_report').add({
           'student_id': idMurid,
-          'semester': selectedSemester.value, // Add selected semester
+          'semester': selectedSemester.value, 
           'religious_and_moral_values_development': agama,
           'physical_development': motorik,
           'cognitive_development': kognitif,
@@ -131,7 +131,7 @@ class NilaiAController extends GetxController {
       Get.back();
       Get.snackbar('Success', 'Data added successfully');
 
-      selectedSemester.value = ''; // Clear selected semester
+      selectedSemester.value = ''; 
       agamaController.clear();
       motorikController.clear();
       kognitifController.clear();

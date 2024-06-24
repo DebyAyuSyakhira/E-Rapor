@@ -1,5 +1,3 @@
-import 'package:e_rapor/app/routes/app_pages.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/splash_controller.dart';

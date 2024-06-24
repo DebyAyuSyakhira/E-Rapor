@@ -10,7 +10,6 @@ class KelasBController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    // Panggil fungsi untuk mengambil data murid kelas B dari Firestore saat kontroller diinisialisasi
     fetchData();
   }
 

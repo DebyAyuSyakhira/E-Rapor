@@ -35,7 +35,7 @@ class AppPages {
   static final routes = [
     GetPage(
       name: _Paths.HOME,
-      page: () => HomeView(),
+      page: () => const HomeView(),
       binding: HomeBinding(),
     ),
     GetPage(
@@ -75,19 +75,17 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.PLAYGROUP,
-      page: () => PlaygroupView(),
+      page: () => const PlaygroupView(),
       binding: PlaygroupBinding(),
     ),
     GetPage(
       name: _Paths.KELAS_A,
-      // transition: Transition.leftToRight,
-      // transitionDuration: Duration(seconds: 1),
-      page: () => KelasAView(),
+      page: () => const KelasAView(),
       binding: KelasABinding(),
     ),
     GetPage(
       name: _Paths.KELAS_B,
-      page: () => KelasBView(),
+      page: () => const KelasBView(),
       binding: KelasBBinding(),
     ),
     GetPage(

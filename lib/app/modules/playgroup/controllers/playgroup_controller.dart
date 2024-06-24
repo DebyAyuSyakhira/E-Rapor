@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class PlaygroupController extends GetxController {
-  // RxList untuk menyimpan daftar murid kelas B
+  // RxList untuk menyimpan daftar murid kelas Playgroup
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   RxList<DocumentSnapshot> murid_c = <DocumentSnapshot>[].obs;
   String idPlaygroup = Get.arguments;
@@ -10,11 +10,10 @@ class PlaygroupController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    // Panggil fungsi untuk mengambil data murid kelas B dari Firestore saat kontroller diinisialisasi
     fetchData();
   }
 
-  // Fungsi untuk mengambil data murid kelas B dari Firestore
+  // Fungsi untuk mengambil data murid kelas Playgroup dari Firestore
   void fetchData() async {
     try {
       _firestore

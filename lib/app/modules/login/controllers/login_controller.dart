@@ -22,16 +22,6 @@ class LoginController extends GetxController {
     required String password,
   }) async {
     try {
-      // await _firebaseAuth.signInWithEmailAndPassword(
-      //   email: email,
-      //   password: password,
-      // );
-      // customSnackBar(
-      //   "Berhasil",
-      //   "Anda berhasil masuk.",
-      // );
-      // Get.offAllNamed(Routes.HOME);
-      // clearInputText();
       UserCredential userCredential = await _firebaseAuth.signInWithEmailAndPassword(
         email: email,
         password: password,
