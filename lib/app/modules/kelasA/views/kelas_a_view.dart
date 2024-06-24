@@ -30,7 +30,7 @@ class KelasAView extends GetView<KelasAController> {
         iconTheme: const IconThemeData(
           color: Colors.white,
         ),
-        backgroundColor: const Color(0xFF00871B), // Warna latar belakang AppBar
+        backgroundColor: const Color(0xFF00871B), 
       ),
       body: Obx(() {
         // Widget Obx akan rebuild saat nilai dari Rx variable berubah
@@ -89,10 +89,6 @@ class KelasAView extends GetView<KelasAController> {
                               const PopupMenuItem<String>(
                                 value: 'hapus',
                                 child: Text('Hapus'),
-                              ),
-                              const PopupMenuItem<String>(
-                                value: 'hapus rapor',
-                                child: Text('Hapus Data Rapor'),
                               ),
                             ];
                           },
